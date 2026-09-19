@@ -11,8 +11,8 @@ const Hero = () => {
 
       <div className="flex w-full max-w-[684px] flex-col items-center justify-center px-4 text-center mx-auto lg:mt-20 mt-10">
         <h2 className="lg:text-[60px] text-[48px] font-semibold">
-          Ready to <span className="text-[#813993] kaushan">Own Your</span>{" "}
-          First Piece of <span className="text-[#FCCB07] kaushan">Land?</span>
+          Ready to <span className="text-purple-20 kaushan">Own Your</span>{" "}
+          First Piece of <span className="text-orange-20 kaushan">Land?</span>
         </h2>
         <p className="lg:text-[22px] mt-3 font-semibold">
           Find the right land, secure your ownership, and take the first step
@@ -26,10 +26,10 @@ const Hero = () => {
         </div>
 
         <div className="flex lg:flex-row flex-col lg:space-x-3 lg:space-y-0 space-y-4 mt-4">
-          <button className="bg-[#FCCB07] py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-[#FCCB07]/90">
+          <button className="bg-orange-20 py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-orange-20/90">
             Explore Our Listing {"->"}
           </button>
-          <button className="text-[#813993] bg-white py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-[#813993]/90 hover:text-white">
+          <button className="text-purple-20 bg-white py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-purple-20/90 hover:text-white">
             About Openage Group
           </button>
         </div>

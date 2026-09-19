@@ -34,7 +34,7 @@ const TopNav = () => {
         </li>
       </ul>
 
-      <button className="bg-[#FCCB07] hover:bg-[#FCCB07]/90 text-[14px] font-bold py-2 px-4 rounded-full">
+      <button className="bg-orange-20 hover:bg-orange-20/90 text-[14px] font-bold py-2 px-4 rounded-full">
         Let&apos;s Talk
       </button>
     </div>

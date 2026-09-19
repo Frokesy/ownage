@@ -232,8 +232,7 @@ export const HeroImgAttachmentTwo = () => (
       y="-1.52588e-05"
       width="657.776"
       height="841.838"
-    >
-    </foreignObject>
+    ></foreignObject>
     <g filter="url(#filter0_dddd_31_508)" data-figma-bg-blur-radius="34.2506">
       <g clipPath="url(#clip0_31_508)">
         <rect
@@ -384,5 +383,20 @@ export const HeroImgAttachmentTwo = () => (
         />
       </clipPath>
     </defs>
+  </svg>
+);
+
+export const DiagArrow = () => (
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2 1C2 0.447715 2.44772 0 3 0L11 5.36442e-07C11.5523 5.36442e-07 12 0.447716 12 1V9C12 9.55229 11.5523 10 11 10C10.4477 10 10 9.55229 10 9V3.41421L1.70711 11.7071C1.31658 12.0976 0.683417 12.0976 0.292893 11.7071C-0.0976311 11.3166 -0.0976311 10.6834 0.292893 10.2929L8.58579 2L3 2C2.44772 2 2 1.55228 2 1Z"
+      fill="white"
+    />
   </svg>
 );

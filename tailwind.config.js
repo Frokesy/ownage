@@ -4,6 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        purple: { 20: '#813993' },
+        orange: { 20: '#FCCB07' },
         forest: { 50: '#f2f7f5', 100: '#dfece7', 600: '#216b5b', 700: '#1b574b', 800: '#18463d', 900: '#163f36' },
         sand: { 50: '#fbfaf7', 100: '#f4efe6', 400: '#cfb782' },
       },
