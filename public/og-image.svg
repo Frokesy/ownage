@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#163f36"/>
+  <circle cx="1010" cy="80" r="360" fill="#cfb782" opacity=".18"/>
+  <path d="M100 430V230l160-110 160 110v200H100Z" fill="none" stroke="#cfb782" stroke-width="18"/>
+  <text x="500" y="282" fill="#fff" font-family="Georgia,serif" font-size="68">Estate management</text>
+  <text x="500" y="360" fill="#cfb782" font-family="Arial,sans-serif" font-size="30">Well-managed properties. Better places to live.</text>
+</svg>
