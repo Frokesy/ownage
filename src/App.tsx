@@ -1,9 +1,10 @@
 import React from 'react'
+import Hero from './components/defaults/Hero';
 
 const App = () => {
   return (
     <div>
-      <h2 className="text-3xl">Project initialized</h2>
+      <Hero />
     </div>
   )
 }
