@@ -400,3 +400,66 @@ export const DiagArrow = () => (
     />
   </svg>
 );
+
+export const LeftArrow = () => (
+  <svg
+    width="29"
+    height="16"
+    viewBox="0 0 29 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g clipPath="url(#clip0_31_303)">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0.924413 7.39955L7.50073 0.823242L8.42451 1.74702L2.49702 7.67451H29V8.98094H2.50598L8.42451 14.8994L7.50073 15.8232L0.924413 9.24693L0.923661 9.24768L0 8.32402L0.000779439 8.32324L0 8.32246L0.923661 7.3988L0.924413 7.39955Z"
+        fill="black"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_31_303">
+        <rect width="29" height="16" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
+export const RightArrow = () => (
+  <svg
+    width="29"
+    height="16"
+    viewBox="0 0 29 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g clipPath="url(#clip0_31_307)">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M28.0756 7.39955L21.4993 0.823242L20.5755 1.74702L26.503 7.67451H0V8.98094H26.494L20.5755 14.8994L21.4993 15.8232L28.0756 9.24693L28.0763 9.24768L29 8.32402L28.9992 8.32324L29 8.32246L28.0763 7.3988L28.0756 7.39955Z"
+        fill="black"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_31_307">
+        <rect width="29" height="16" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
+export const LocationIcon = () => (
+  <svg
+    width="10"
+    height="14"
+    viewBox="0 0 10 14"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5 0C2.25 0 0 2.52 0 5.6C0 9.38 4.375 13.65 4.5625 13.86C4.6875 13.93 4.875 14 5 14C5.125 14 5.3125 13.93 5.4375 13.86C5.625 13.65 10 9.38 10 5.6C10 2.52 7.75 0 5 0ZM5 12.39C3.6875 10.99 1.25 7.98 1.25 5.6C1.25 3.29 2.9375 1.4 5 1.4C7.0625 1.4 8.75 3.29 8.75 5.6C8.75 7.91 6.3125 10.99 5 12.39ZM5 2.8C3.625 2.8 2.5 4.06 2.5 5.6C2.5 7.14 3.625 8.4 5 8.4C6.375 8.4 7.5 7.14 7.5 5.6C7.5 4.06 6.375 2.8 5 2.8ZM5 7C4.3125 7 3.75 6.37 3.75 5.6C3.75 4.83 4.3125 4.2 5 4.2C5.6875 4.2 6.25 4.83 6.25 5.6C6.25 6.37 5.6875 7 5 7Z"
+      fill="black"
+    />
+  </svg>
+);

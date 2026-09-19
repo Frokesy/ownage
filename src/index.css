@@ -10,4 +10,13 @@ body { margin: 0; min-width: 320px; background: #fbfaf7; }
   .kaushan {
     font-family: 'Kaushan Script', cursive;
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

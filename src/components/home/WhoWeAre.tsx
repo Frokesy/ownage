@@ -4,7 +4,7 @@ import { DiagArrow } from "../icons";
 const WhoWeAre = () => {
   return (
     <div className="bg-[#F6F1FD]">
-      <div className="w-[90vw] lg:py-20 lg:mb-20 mb-10 py-10 mx-auto flex lg:flex-row flex-col justify-between lg:space-x-4">
+      <div className="w-[90vw] lg:py-20 py-10 mx-auto flex lg:flex-row flex-col justify-between lg:space-x-4">
         <div className="lg:w-[35%] mt-10 lg:mt-0">
           <h2 className="uppercase text-purple-20 font-semibold">Who We Are</h2>
           <h2 className="lg:text-[36px] text-[30px] mt-3 mb-4 font-semibold">
