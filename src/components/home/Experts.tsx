@@ -31,7 +31,7 @@ const Experts = () => {
         <img
           src="/experts-bg.png"
           alt="The Ownage property experts"
-          className="w-full object-contain drop-shadow-2xl"
+          className="w-full object-contain drop-shadow-2xl -mt-6"
         />
       </div>
 
