@@ -3,6 +3,7 @@ import Hero from './components/defaults/Hero';
 import WhoWeAre from './components/home/WhoWeAre';
 import Services from './components/home/Services';
 import TheWhy from './components/home/TheWhy';
+import Experts from './components/home/Experts';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <WhoWeAre />
       <Services />
       <TheWhy />
+      <Experts />
     </div>
   )
 }
