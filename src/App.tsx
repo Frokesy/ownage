@@ -6,6 +6,7 @@ import TheWhy from './components/home/TheWhy';
 import Experts from './components/home/Experts';
 import Testimonials from './components/home/Testimonials';
 import Blog from './components/home/Blog';
+import Cta from './components/home/Cta';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Experts />
       <Testimonials />
       <Blog />
+      <Cta />
     </div>
   )
 }
