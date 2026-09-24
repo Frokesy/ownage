@@ -7,6 +7,7 @@ import Experts from './components/home/Experts';
 import Testimonials from './components/home/Testimonials';
 import Blog from './components/home/Blog';
 import Cta from './components/home/Cta';
+import Footer from './components/defaults/Footer';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Testimonials />
       <Blog />
       <Cta />
+      <Footer />
     </div>
   )
 }
