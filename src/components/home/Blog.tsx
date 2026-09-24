@@ -1,31 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { blogPosts } from "../../data/blog";
 
-const blogItems = [
-  {
-    id: 1,
-    img: "/blog-img-1.png",
-    title: "5 Things to Consider Before Investing in Real Estate",
-    subText:
-      "Key factors that can help you make a smart and profitable property investment. Expert perspectives, market updates, and practical tips to help you make informed real estate choices.",
-  },
-  {
-    id: 2,
-    img: "/blog-img-2.png",
-    title: "Why Location Still Determines Property Value",
-    subText:
-      "Understand how access, infrastructure, neighbourhood growth, and future development can influence a property's long-term value and investment potential.",
-  },
-  {
-    id: 3,
-    img: "/blog-img-3.png",
-    title: "Designing Spaces People Love to Live In",
-    subText:
-      "Explore the thoughtful design choices that turn a building into a comfortable, functional home and create communities where people genuinely want to stay.",
-  },
-];
+const featuredPosts = blogPosts.slice(0, 3);
 
 const Blog = () => {
-  const [activeId, setActiveId] = useState(blogItems[0].id);
+  const [activeId, setActiveId] = useState(featuredPosts[0].id);
 
   return (
     <section className="mx-auto w-[90%] max-w-7xl py-14 lg:py-24">
@@ -39,7 +19,7 @@ const Blog = () => {
       </div>
 
       <div className="mt-10 flex flex-col gap-6 md:flex-row md:items-start">
-        {blogItems.map((item) => {
+        {featuredPosts.map((item) => {
           const isActive = item.id === activeId;
 
           return (
@@ -77,19 +57,16 @@ const Blog = () => {
                 >
                   <div className="overflow-hidden">
                     <p className="text-[16px] leading-7 text-[#282828] lg:text-[18px]">
-                      {item.subText}
+                      {item.excerpt}
                     </p>
                   </div>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => setActiveId(item.id)}
-                  aria-expanded={isActive}
-                  className="mt-4 font-semibold text-purple-20 underline decoration-2 underline-offset-4 transition-colors hover:text-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20"
-                >
-                  {isActive ? "Read article" : "Expand"}
-                </button>
+                {isActive ? (
+                  <Link to={`/blog/${item.slug}`} className="mt-4 inline-block font-semibold text-purple-20 underline decoration-2 underline-offset-4 hover:text-purple-800">Read article</Link>
+                ) : (
+                  <button type="button" onClick={() => setActiveId(item.id)} aria-expanded={false} className="mt-4 font-semibold text-purple-20 underline decoration-2 underline-offset-4 hover:text-purple-800">Expand</button>
+                )}
               </div>
             </article>
           );
@@ -97,9 +74,9 @@ const Blog = () => {
       </div>
 
       <div className="flex items-center lg:my-20 my-10 justify-center">
-        <button className="lg:text-[22px] text-[18px] font-semibold text-white bg-purple-20 py-3 px-10 rounded-xl">
+        <Link to="/blog" className="lg:text-[22px] text-[18px] font-semibold text-white bg-purple-20 py-3 px-10 rounded-xl">
           Explore more
-        </button>
+        </Link>
       </div>
     </section>
   );

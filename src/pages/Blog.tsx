@@ -1,73 +1,16 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import TopNav from "../components/defaults/TopNav";
 import Footer from "../components/defaults/Footer";
 import { CalendarIcon, SmallAvatarIcon } from "../components/icons";
-
-const categories = [
-  "All Categories",
-  "User Stories",
-  "Updates",
-  "Feature Spotlights",
-  "Tips",
-];
-
-const blogItems = [
-  {
-    id: 1,
-    img: "/blog-img-1.png",
-    title: "5 Things to Consider Before Investing in Real Estate",
-    category: "Tips",
-    excerpt:
-      "Learn the essential checks every buyer should make before committing to a property investment.",
-  },
-  {
-    id: 2,
-    img: "/blog-img-2.png",
-    title: "Why Location Still Determines Property Value",
-    category: "Feature Spotlights",
-    excerpt:
-      "See how infrastructure, access, and neighbourhood growth influence a property's long-term value.",
-  },
-  {
-    id: 3,
-    img: "/blog-img-3.png",
-    title: "Designing Spaces People Love to Live In",
-    category: "Updates",
-    excerpt:
-      "Thoughtful layouts and human-centred details can turn a building into a comfortable home.",
-  },
-  {
-    id: 4,
-    img: "/blog-img-1.png",
-    title: "How One Family Found Their Perfect First Home",
-    category: "User Stories",
-    excerpt:
-      "Follow one buyer's journey from their first inspection to receiving the keys to a new home.",
-  },
-  {
-    id: 5,
-    img: "/blog-img-2.png",
-    title: "What to Know About Our Latest Development",
-    category: "Updates",
-    excerpt:
-      "Discover the latest milestones, amenities, and availability from one of our growing communities.",
-  },
-  {
-    id: 6,
-    img: "/blog-img-3.png",
-    title: "A Smarter Guide to Choosing Residential Land",
-    category: "Tips",
-    excerpt:
-      "Practical questions to ask about title, access, utilities, and future development before buying.",
-  },
-];
+import { blogCategories, blogPosts } from "../data/blog";
 
 const SiteBlog = () => {
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const [activeCategory, setActiveCategory] = useState<string>(blogCategories[0]);
   const visibleItems =
-    activeCategory === categories[0]
-      ? blogItems
-      : blogItems.filter((item) => item.category === activeCategory);
+    activeCategory === blogCategories[0]
+      ? blogPosts
+      : blogPosts.filter((item) => item.category === activeCategory);
 
   const selectCategory = (category: string) => {
     setActiveCategory(category);
@@ -102,7 +45,7 @@ const SiteBlog = () => {
             onChange={(event) => selectCategory(event.target.value)}
             className="w-full rounded-xl border border-[#ccc] bg-white px-4 py-3 font-semibold outline-none focus:ring-2 focus:ring-purple-20"
           >
-            {categories.map((category) => (
+            {blogCategories.map((category) => (
               <option key={category}>{category}</option>
             ))}
           </select>
@@ -113,7 +56,7 @@ const SiteBlog = () => {
           role="tablist"
           aria-label="Blog categories"
         >
-          {categories.map((category) => {
+          {blogCategories.map((category) => {
             const isActive = category === activeCategory;
             return (
               <button
@@ -150,29 +93,27 @@ const SiteBlog = () => {
                 <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
                   <div className="flex items-center gap-2">
                     <SmallAvatarIcon />
-                    <span className="text-[12px] text-[#1E1E2F]">
-                      Adam Olabode
-                    </span>
+                    <span className="text-[12px] text-[#1E1E2F]">{item.author}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CalendarIcon />
                     <time
-                      dateTime="2025-07-06"
+                      dateTime={item.publishedAt}
                       className="text-[12px] text-[#1E1E2F]"
                     >
-                      06 Jul, 2025
+                      {item.displayDate}
                     </time>
                   </div>
                 </div>
                 <h2 className="mt-2 text-[19px] font-semibold leading-7 sm:text-[20px]">
                   {item.title}
                 </h2>
-                <button
-                  type="button"
+                <Link
+                  to={`/blog/${item.slug}`}
                   className="mt-auto self-start pt-6 font-semibold text-purple-20 underline decoration-2 underline-offset-4 transition-colors hover:text-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20"
                 >
                   <span>Read Article</span>
-                </button>
+                </Link>
               </article>
             );
           })}

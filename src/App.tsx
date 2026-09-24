@@ -10,6 +10,7 @@ import Cta from './components/home/Cta';
 import Footer from './components/defaults/Footer';
 import Contact from './pages/Contact';
 import SiteBlog from './pages/Blog';
+import BlogArticle from './pages/BlogArticle';
 
 const Home = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => (
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/blog" element={<SiteBlog />} />
+    <Route path="/blog/:slug" element={<BlogArticle />} />
     <Route path="/contact" element={<Contact />} />
     
     <Route path="*" element={<Home />} />
