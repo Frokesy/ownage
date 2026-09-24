@@ -1,4 +1,4 @@
-import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 import Hero from './components/defaults/Hero';
 import WhoWeAre from './components/home/WhoWeAre';
 import Services from './components/home/Services';
@@ -8,8 +8,9 @@ import Testimonials from './components/home/Testimonials';
 import Blog from './components/home/Blog';
 import Cta from './components/home/Cta';
 import Footer from './components/defaults/Footer';
+import Contact from './pages/Contact';
 
-const App = () => {
+const Home = () => {
   return (
     <div>
       <Hero />
@@ -24,5 +25,13 @@ const App = () => {
     </div>
   )
 }
+
+const App = () => (
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/contact" element={<Contact />} />
+    <Route path="*" element={<Home />} />
+  </Routes>
+)
 
 export default App

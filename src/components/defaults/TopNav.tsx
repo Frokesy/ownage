@@ -1,43 +1,93 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { HamburgerIcon } from "../icons";
 
-const TopNav = () => {
-  return (
-    <div className="bg-[#ffffff] p-2 rounded-full shadow-sm lg:min-w-[70vw] min-w-[90vw] flex justify-between items-center">
-      <div className="lg:hidden flex space-x-2 items-center">
-        <div className="lg:hidden block">
-          <HamburgerIcon />
-        </div>
-        <img src="/logo.svg" alt="logo" />
-      </div>
-      <img src="/logo.svg" alt="logo" className="lg:block hidden" />
-      <ul className="lg:flex hidden space-x-10 text-[14px]">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/project">Project</a>
-        </li>
-        <li>
-          <a href="/about">About</a>
-        </li>
-        <li>
-          <a href="/blog">Blog</a>
-        </li>
-        <li>
-          <a href="/Careers">Careers</a>
-        </li>
-        <li>
-          <a href="/careers-2">Careers 2</a>
-        </li>
-        <li>
-          <a href="/contact">Contact</a>
-        </li>
-      </ul>
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Project", href: "/project" },
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+  { label: "Careers", href: "/careers" },
+  { label: "Careers 2", href: "/careers-2" },
+  { label: "Contact", href: "/contact" },
+];
 
-      <button className="bg-orange-20 hover:bg-orange-20/90 text-[14px] font-bold py-2 px-4 rounded-full">
-        Let&apos;s Talk
-      </button>
-    </div>
+const TopNav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [isOpen]);
+
+  return (
+    <>
+      <nav className="flex min-w-[90vw] items-center justify-between rounded-full bg-white p-2 shadow-sm lg:min-w-[70vw]" aria-label="Primary navigation">
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setIsOpen(true)}
+            className="rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"
+          >
+          <HamburgerIcon />
+          </button>
+          <Link to="/" aria-label="Ownage Group home"><img src="/logo.svg" alt="" className="w-24" /></Link>
+        </div>
+
+        <Link to="/" aria-label="Ownage Group home" className="hidden lg:block"><img src="/logo.svg" alt="" /></Link>
+        <ul className="hidden items-center gap-8 text-[14px] lg:flex">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <Link className="font-medium transition-colors hover:text-purple-20" to={item.href}>{item.label}</Link>
+            </li>
+          ))}
+        </ul>
+
+        <Link to="/contact" className="rounded-full bg-orange-20 px-4 py-2 text-[14px] font-bold transition-colors hover:bg-orange-20/90">
+          Let&apos;s Talk
+        </Link>
+      </nav>
+
+      <div className={`fixed inset-0 z-50 lg:hidden ${isOpen ? "pointer-events-auto" : "pointer-events-none"}`} aria-hidden={!isOpen}>
+        <button
+          type="button"
+          aria-label="Close navigation menu"
+          onClick={() => setIsOpen(false)}
+          className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`}
+        />
+        <aside
+          id="mobile-navigation"
+          aria-label="Mobile navigation"
+          className={`absolute inset-y-0 left-0 flex w-[84%] max-w-sm flex-col bg-white p-6 shadow-2xl transition-transform duration-300 ease-out ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+        >
+          <div className="flex items-center justify-between border-b border-black/10 pb-5">
+            <Link to="/" onClick={() => setIsOpen(false)} aria-label="Ownage Group home"><img src="/logo.svg" alt="" className="w-32" /></Link>
+            <button type="button" aria-label="Close navigation menu" onClick={() => setIsOpen(false)} className="grid h-10 w-10 place-items-center rounded-full bg-purple-20 text-2xl text-white">×</button>
+          </div>
+          <ul className="mt-8 flex flex-col">
+            {navItems.map((item) => (
+              <li key={item.href} className="border-b border-black/10">
+                <Link to={item.href} onClick={() => setIsOpen(false)} className="flex items-center justify-between py-4 text-lg font-semibold transition-colors hover:text-purple-20">
+                  {item.label}<span aria-hidden="true" className="text-2xl font-normal">›</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link to="/contact" onClick={() => setIsOpen(false)} className="mt-auto rounded-xl bg-orange-20 px-6 py-3 text-center font-bold">Talk to our team</Link>
+        </aside>
+      </div>
+    </>
   );
 };
 
