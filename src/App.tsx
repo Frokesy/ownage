@@ -9,6 +9,7 @@ import Blog from './components/home/Blog';
 import Cta from './components/home/Cta';
 import Footer from './components/defaults/Footer';
 import Contact from './pages/Contact';
+import SiteBlog from './pages/Blog';
 
 const Home = () => {
   return (
@@ -29,7 +30,9 @@ const Home = () => {
 const App = () => (
   <Routes>
     <Route path="/" element={<Home />} />
+    <Route path="/blog" element={<SiteBlog />} />
     <Route path="/contact" element={<Contact />} />
+    
     <Route path="*" element={<Home />} />
   </Routes>
 )
