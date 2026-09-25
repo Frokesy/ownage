@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import TopNav from "../components/defaults/TopNav";
 import Footer from "../components/defaults/Footer";
 import { CalendarIcon, SmallAvatarIcon } from "../components/icons";
-import { blogCategories, blogPosts } from "../data/blog";
+import { blogCategories } from "../data/blog";
 import BlogImage from "../components/blog/BlogImage";
+import { useBlogPosts } from "../context/BlogContext";
 
 const SiteBlog = () => {
   const [activeCategory, setActiveCategory] = useState<string>(blogCategories[0]);
+  const { posts: blogPosts, isLoading } = useBlogPosts();
   const visibleItems =
     activeCategory === blogCategories[0]
       ? blogPosts
@@ -75,7 +77,7 @@ const SiteBlog = () => {
         </div>
 
         <p className="text-sm text-[#606060]" aria-live="polite">
-          Showing {visibleItems.length}{" "}
+          {isLoading ? "Refreshing articles…" : `Showing ${visibleItems.length}`}{" "}
           {visibleItems.length === 1 ? "article" : "articles"}
         </p>
 
@@ -88,7 +90,7 @@ const SiteBlog = () => {
               >
                 <BlogImage
                   src={item.img}
-                  alt=""
+                  alt={item.imageAlt || ""}
                   className="h-[210px] w-full rounded-lg object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:h-[232px]"
                 />
                 <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">

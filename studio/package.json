@@ -1,0 +1,22 @@
+{
+  "name": "ownage-content-studio",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "@sanity/vision": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "sanity": "latest",
+    "styled-components": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "typescript": "latest"
+  }
+}

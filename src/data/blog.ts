@@ -5,9 +5,10 @@ export type BlogSection = {
 };
 
 export type BlogPost = {
-  id: number;
+  id: number | string;
   slug: string;
   img: string;
+  imageAlt?: string;
   title: string;
   category: "User Stories" | "Updates" | "Feature Spotlights" | "Tips";
   excerpt: string;
@@ -15,6 +16,7 @@ export type BlogPost = {
   publishedAt: string;
   displayDate: string;
   content: BlogSection[];
+  body?: PortableTextBlock[];
 };
 
 export const blogPosts: BlogPost[] = [
@@ -77,3 +79,4 @@ export const blogPosts: BlogPost[] = [
 export const blogCategories = ["All Categories", "User Stories", "Updates", "Feature Spotlights", "Tips"] as const;
 
 export const getBlogPost = (slug: string) => blogPosts.find((post) => post.slug === slug);
+import type { PortableTextBlock } from "@portabletext/types";

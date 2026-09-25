@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { blogPosts } from "../../data/blog";
 import BlogImage from "../blog/BlogImage";
-
-const featuredPosts = blogPosts.slice(0, 3);
+import { useBlogPosts } from "../../context/BlogContext";
 
 const Blog = () => {
-  const [activeId, setActiveId] = useState(featuredPosts[0].id);
+  const { posts } = useBlogPosts();
+  const featuredPosts = posts.slice(0, 3);
+  const [activeId, setActiveId] = useState<number | string | null>(null);
+  const resolvedActiveId = featuredPosts.some((post) => post.id === activeId)
+    ? activeId
+    : featuredPosts[0]?.id;
 
   return (
     <section className="mx-auto w-[90%] max-w-7xl py-14 lg:py-24">
@@ -21,7 +24,7 @@ const Blog = () => {
 
       <div className="mt-10 flex flex-col gap-6 md:flex-row md:items-start">
         {featuredPosts.map((item) => {
-          const isActive = item.id === activeId;
+          const isActive = item.id === resolvedActiveId;
 
           return (
             <article
@@ -34,7 +37,7 @@ const Blog = () => {
             >
               <BlogImage
                 src={item.img}
-                alt=""
+                alt={item.imageAlt || ""}
                 className={`w-full object-cover transition-[height,filter,transform] duration-500 ease-out motion-reduce:transition-none ${
                   isActive
                     ? "h-[260px] sm:h-[330px] md:h-[360px]"

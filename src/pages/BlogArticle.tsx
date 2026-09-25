@@ -1,12 +1,31 @@
 import { Link, Navigate, useParams } from "react-router-dom";
+import { PortableText } from "@portabletext/react";
+import type { PortableTextComponents } from "@portabletext/react";
 import Footer from "../components/defaults/Footer";
 import TopNav from "../components/defaults/TopNav";
-import { getBlogPost } from "../data/blog";
 import BlogImage from "../components/blog/BlogImage";
+import { useBlogPosts } from "../context/BlogContext";
+
+const portableTextComponents: PortableTextComponents = {
+  types: {
+    image: ({ value }) => {
+      const image = value as { url?: string; alt?: string };
+      return image.url ? (
+        <img
+          src={image.url}
+          alt={image.alt || ""}
+          className="my-10 w-full rounded-2xl object-cover"
+          loading="lazy"
+        />
+      ) : null;
+    },
+  },
+};
 
 const BlogArticle = () => {
   const { slug = "" } = useParams();
-  const post = getBlogPost(slug);
+  const { posts } = useBlogPosts();
+  const post = posts.find((item) => item.slug === slug);
 
   if (!post) return <Navigate to="/blog" replace />;
 
@@ -23,11 +42,15 @@ const BlogArticle = () => {
           </div>
         </div>
 
-        <BlogImage src={post.img} alt="" eager className="h-[300px] w-full object-cover sm:h-[480px] lg:h-[620px]" />
+        <BlogImage src={post.img} alt={post.imageAlt || ""} eager className="h-[300px] w-full object-cover sm:h-[480px] lg:h-[620px]" />
 
         <article className="mx-auto w-[90%] py-12 sm:py-16 lg:w-[60%] lg:max-w-4xl lg:py-24">
           <p className="text-xl font-medium leading-8 text-[#282828] sm:text-2xl sm:leading-10">{post.excerpt}</p>
-          {post.content.map((section) => (
+          {post.body?.length ? (
+            <div className="mt-10 space-y-6 text-[16px] leading-8 text-[#383838] sm:mt-14 sm:text-[18px] [&_h2]:pt-5 [&_h2]:text-[28px] [&_h2]:font-semibold [&_h2]:leading-tight sm:[&_h2]:text-[36px] [&_li]:ml-6 [&_li]:list-disc [&_li]:marker:text-purple-20">
+              <PortableText value={post.body} components={portableTextComponents} />
+            </div>
+          ) : post.content.map((section) => (
             <section key={section.heading} className="mt-10 sm:mt-14">
               <h2 className="text-[28px] font-semibold leading-tight sm:text-[36px]">{section.heading}</h2>
               <div className="mt-5 space-y-5 text-[16px] leading-8 text-[#383838] sm:text-[18px]">
