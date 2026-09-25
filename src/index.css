@@ -20,3 +20,42 @@ body { margin: 0; min-width: 320px; background: #fbfaf7; }
     display: none;
   }
 }
+
+@keyframes carousel-focus-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.94);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes carousel-side-enter {
+  from {
+    opacity: 0;
+    transform: translateX(14px) scale(0.96);
+  }
+  to {
+    opacity: 0.75;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.carousel-focus-enter {
+  animation: carousel-focus-enter 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.carousel-side-enter {
+  animation: carousel-side-enter 500ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-focus-enter,
+  .carousel-side-enter {
+    animation: none;
+  }
+}

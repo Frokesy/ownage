@@ -13,6 +13,7 @@ import SiteBlog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import Project from "./pages/Project";
 import AboutUs from "./pages/AboutUs";
+import Careers from "./pages/Careers";
 
 const Home = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => (
     <Route path="/about" element={<AboutUs />} />
     <Route path="/blog" element={<SiteBlog />} />
     <Route path="/blog/:slug" element={<BlogArticle />} />
+    <Route path="/careers" element={<Careers />} />
     <Route path="/contact" element={<Contact />} />
 
     <Route path="*" element={<Home />} />
