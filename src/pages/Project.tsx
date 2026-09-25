@@ -1,10 +1,14 @@
-import React from "react";
+import { useCallback, useState } from "react";
 import TopNav from "../components/defaults/TopNav";
 import Footer from "../components/defaults/Footer";
 import { LocationIcon } from "../components/icons";
+import PropertyModal, { type PropertyDetails } from "../components/projects/PropertyModal";
 
 const Project = () => {
-  const properties = [
+  const [selectedProperty, setSelectedProperty] = useState<PropertyDetails | null>(null);
+  const closeModal = useCallback(() => setSelectedProperty(null), []);
+
+  const properties: PropertyDetails[] = [
     {
       id: 1,
       img: "/project-dummy.png",
@@ -12,6 +16,11 @@ const Project = () => {
       title: "Ownage Court",
       desc: "Premium residential plots, designed for modern living and lasting value",
       location: "Moniya, Ibadan",
+      price: "₦8,500,000",
+      plotSize: "500 sqm",
+      status: "Available",
+      overview: "Ownage Court is a thoughtfully planned residential community designed for buyers seeking secure ownership, practical infrastructure, and strong long-term value in a growing location.",
+      features: ["Verified documentation", "Accessible road network", "Planned drainage", "Perimeter security", "Flexible payment plan", "Residential zoning"],
     },
     {
       id: 2,
@@ -20,6 +29,11 @@ const Project = () => {
       title: "Ownage Court",
       desc: "Premium residential plots, designed for modern living and lasting value",
       location: "Moniya, Ibadan",
+      price: "₦12,000,000",
+      plotSize: "600 sqm",
+      status: "Selling fast",
+      overview: "This serviced plot option offers additional space for a generous family residence, with access to the same planned community infrastructure and professional documentation process.",
+      features: ["Corner-piece options", "Survey documentation", "Estate road access", "Drainage provision", "Community planning", "Development support"],
     },
     {
       id: 3,
@@ -28,6 +42,11 @@ const Project = () => {
       title: "Ownage Court",
       desc: "Premium residential plots, designed for modern living and lasting value",
       location: "Moniya, Ibadan",
+      price: "₦18,500,000",
+      plotSize: "450 sqm",
+      status: "Available",
+      overview: "A premium property opportunity for homeowners and investors who value convenient access, a defined development plan, and a neighbourhood positioned for future growth.",
+      features: ["Strategic location", "Secure estate layout", "Power provision", "Green spaces", "Flexible milestones", "Investment potential"],
     },
     {
       id: 4,
@@ -36,6 +55,11 @@ const Project = () => {
       title: "Ownage Court",
       desc: "Premium residential plots, designed for modern living and lasting value",
       location: "Moniya, Ibadan",
+      price: "₦25,000,000",
+      plotSize: "750 sqm",
+      status: "Limited units",
+      overview: "Our largest current plot option provides the freedom to create a spacious private residence while benefiting from the structure and shared amenities of a managed estate.",
+      features: ["Generous plot size", "Premium positioning", "Gated community", "Wide internal roads", "Clear title process", "Dedicated support"],
     },
   ];
   return (
@@ -55,15 +79,25 @@ const Project = () => {
 
       <div className="flex flex-col space-y-16 w-[90%] mx-auto">
         {properties.map((property) => (
-          <div
+          <article
             key={property.id}
-            className={`flex items-center ${property.id % 2 ? 'lg:flex-row flex-col' : 'lg:flex-row-reverse flex-col' } justify-between lg:space-y-0 space-y-10 lg:space-x-10`}
+            role="button"
+            tabIndex={0}
+            aria-label={`View details for ${property.title}`}
+            onClick={() => setSelectedProperty(property)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setSelectedProperty(property);
+              }
+            }}
+            className={`group flex cursor-pointer items-center rounded-2xl p-2 transition-[background-color,box-shadow] hover:bg-[#F9F9F9] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20 ${property.id % 2 ? 'lg:flex-row flex-col' : 'lg:flex-row-reverse flex-col' } justify-between lg:space-y-0 space-y-8 lg:gap-10`}
           >
             <div className="lg:w-[50%]">
               <img
                 src={property.img}
                 alt="property-img"
-                className="w-full object-cover"
+                className="w-full rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]"
               />
             </div>
             <div className="lg:space-y-4 space-y-3 lg:w-[50%]">
@@ -79,14 +113,16 @@ const Project = () => {
                 <LocationIcon />
                 <span className="lg:text-[16px] text-[12px]">{property.location}</span>
               </div>
+              <span className="mt-2 inline-flex font-semibold text-purple-20 underline underline-offset-4">View full details</span>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
       <div className="lg:mt-20 mt-10">
         <Footer />
       </div>
+      <PropertyModal property={selectedProperty} onClose={closeModal} />
     </div>
   );
 };
