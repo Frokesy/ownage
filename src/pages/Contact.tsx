@@ -65,7 +65,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <form className="space-y-5 lg:w-[50%]">
+        <form className="w-full space-y-5 lg:w-[50%]">
           <div className="space-y-3">
             <label className="font-medium" htmlFor="name">
               Name *

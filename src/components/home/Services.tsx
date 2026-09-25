@@ -24,8 +24,8 @@ const Services = () => {
   };
 
   return (
-    <section className="min-h-screen bg-[url('/service-bg.png')] bg-cover bg-center py-12 sm:py-16 lg:py-20">
-      <div className="mx-auto flex w-[90vw] max-w-7xl flex-col gap-7 sm:flex-row sm:items-end sm:justify-between">
+    <section className="bg-[url('/service-bg.png')] bg-cover bg-center py-12 sm:py-16 lg:py-20">
+      <div className="mx-auto flex w-[90%] max-w-7xl flex-col gap-7 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-3xl">
           <h2 className="text-[34px] font-semibold leading-tight text-purple-500 sm:text-[44px] lg:text-[56px]">
             Find Your Next Place
@@ -59,7 +59,7 @@ const Services = () => {
       <div
         ref={scrollContainerRef}
         aria-label="Available properties"
-        className="scrollbar-hide mx-auto mt-8 flex w-[90vw] max-w-7xl snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-4 sm:mt-10 sm:gap-7"
+        className="scrollbar-hide mx-auto mt-8 flex w-[90%] max-w-7xl snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-4 sm:mt-10 sm:gap-7"
       >
         {services.map((service) => (
           <article key={service.name} className="group w-[82vw] max-w-[340px] shrink-0 snap-start transition-transform duration-300 hover:-translate-y-1 sm:w-[320px]">

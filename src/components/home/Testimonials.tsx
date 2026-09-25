@@ -52,7 +52,7 @@ const Testimonials = () => {
               alt={`${activeTestimonial.name}, ${activeTestimonial.role}`}
               className="carousel-focus-enter aspect-square w-[220px] shrink-0 rounded-full object-cover object-top shadow-xl sm:w-[270px] lg:w-[300px]"
             />
-            <div key={activeIndex} className="carousel-focus-enter -mt-5 w-[92%] space-y-3 rounded-2xl bg-white p-6 shadow-xl sm:p-8 lg:absolute lg:right-0 lg:mt-0 lg:w-[55%]">
+            <div key={activeIndex} className="carousel-focus-enter -mt-3 w-[92%] space-y-3 rounded-2xl bg-white p-6 shadow-xl sm:-mt-5 sm:p-8 lg:absolute lg:right-0 lg:mt-0 lg:w-[55%]">
               <p className="text-sm font-semibold uppercase tracking-wider text-purple-20">{activeTestimonial.role}</p>
               <h3 className="text-[24px] font-semibold lg:text-[30px]">{activeTestimonial.name}</h3>
               <blockquote className="text-[16px] leading-7 lg:text-[20px] lg:leading-8">“{activeTestimonial.quote}”</blockquote>

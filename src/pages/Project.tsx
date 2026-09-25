@@ -77,7 +77,7 @@ const Project = () => {
         </p>
       </div>
 
-      <div className="flex flex-col space-y-16 w-[90%] mx-auto">
+      <div className="mx-auto flex w-[90%] max-w-7xl flex-col space-y-10 sm:space-y-14 lg:space-y-16">
         {properties.map((property) => (
           <article
             key={property.id}

@@ -10,7 +10,7 @@ const Hero = () => {
       </div>
 
       <div className="flex w-full max-w-[684px] flex-col items-center justify-center px-4 text-center mx-auto lg:mt-20 mt-10">
-        <h2 className="lg:text-[60px] text-[48px] font-semibold">
+        <h2 className="text-[40px] font-semibold leading-[1.12] sm:text-[48px] lg:text-[60px]">
           Ready to <span className="text-purple-20 kaushan">Own Your</span>{" "}
           First Piece of <span className="text-orange-20 kaushan">Land?</span>
         </h2>

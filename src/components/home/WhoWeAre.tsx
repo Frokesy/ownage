@@ -4,8 +4,8 @@ import { DiagArrow } from "../icons";
 const WhoWeAre = () => {
   return (
     <div className="bg-[#F6F1FD]">
-      <div className="w-[90vw] lg:py-20 py-10 mx-auto flex lg:flex-row flex-col justify-between lg:space-x-4">
-        <div className="lg:w-[35%] mt-10 lg:mt-0">
+      <div className="mx-auto flex w-[90%] max-w-7xl flex-col justify-between py-10 lg:flex-row lg:space-x-4 lg:py-20">
+        <div className="lg:w-[35%]">
           <h2 className="uppercase text-purple-20 font-semibold">Who We Are</h2>
           <h2 className="lg:text-[36px] text-[30px] mt-3 mb-4 font-semibold">
             We Create places Designed for the way People wants to live
@@ -17,7 +17,7 @@ const WhoWeAre = () => {
             <DiagArrow />
           </button>
         </div>
-        <div className="lg:w-[65%] flex lg:flex-row flex-col lg:mt-0 mt-10 items-center lg:space-x-6">
+        <div className="mt-8 flex flex-col items-center lg:mt-0 lg:w-[65%] lg:flex-row lg:space-x-6">
           <div className="space-y-4">
             <p className="lg:text-[18px] text-[14px] font-semibold">
               Ownage Group is a real estate development company committed to

@@ -117,9 +117,9 @@ const CareersTwo = () => {
                 className="micro-image w-full rounded-2xl object-cover"
               />
             </div>
-            <form className="lg:w-[50%] space-y-5">
+            <form className="w-full space-y-5 lg:w-[50%]">
               <div className="space-y-3">
-                <label className="font-medium" htmlFor="phone">
+                <label className="font-medium" htmlFor="name">
                   Full Name *
                 </label>
                 <input
@@ -147,7 +147,7 @@ const CareersTwo = () => {
                 />
               </div>
               <div className="space-y-3">
-                <label className="font-medium" htmlFor="name">
+                <label className="font-medium" htmlFor="phone">
                   Phone Number *
                 </label>
                 <input
@@ -168,10 +168,10 @@ const CareersTwo = () => {
                   {["Yes", "No"].map((option) => (
                     <label
                       key={option}
-                      className="flex cursor-pointer items-center gap-3 transition-colors"
+                      className="flex cursor-pointer items-center gap-3 rounded-lg border border-black/10 bg-white px-4 py-3 transition-colors has-[:checked]:border-purple-20 has-[:checked]:bg-purple-20/10 sm:min-w-28"
                     >
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="realEstateExperience"
                         value={option.toLowerCase()}
                         required

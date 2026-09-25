@@ -29,7 +29,7 @@ const TheWhy = () => {
   ];
   return (
     <div className="bg-[#F6F1FD] lg:py-20 py-10">
-      <div className="w-[90%] mx-auto flex lg:flex-row flex-col justify-between lg:space-x-10">
+      <div className="mx-auto flex w-[90%] max-w-7xl flex-col justify-between lg:flex-row lg:space-x-10">
         <div className="lg:w-[40%]">
           <h2 className="lg:text-[56px] text-[30px] font-semibold">
             Why Ownage?
@@ -60,7 +60,7 @@ const TheWhy = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-10 lg:w-[50%] mt-10 lg:mt-0">
+        <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-8 lg:mt-0 lg:w-[50%] lg:gap-10">
           {reasons.map((reason) => (
             <div className="space-y-4" key={reason.id}>
               <div className="lg:w-[82px] lg:h-[80px] w-[60px] h-[60px] flex justify-center items-center text-[26px] font-semibold font-sans text-purple-20 bg-white rounded-br-xl">
