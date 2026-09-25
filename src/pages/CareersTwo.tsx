@@ -55,7 +55,7 @@ const CareersTwo = () => {
         </p>
         <a
           href="#opportunity"
-          className="rounded-xl bg-purple-20 px-8 py-3 text-[16px] font-semibold text-white transition-colors hover:bg-purple-20/90 sm:px-10 sm:text-[18px]"
+          className="micro-button rounded-xl bg-purple-20 px-8 py-3 text-[16px] font-semibold text-white hover:bg-purple-20/90 sm:px-10 sm:text-[18px]"
         >
           Join the team
         </a>
@@ -114,7 +114,7 @@ const CareersTwo = () => {
               <img
                 src="/careers/img-six.png"
                 alt="Ownage realtor application"
-                className="w-full rounded-2xl object-cover"
+                className="micro-image w-full rounded-2xl object-cover"
               />
             </div>
             <form className="lg:w-[50%] space-y-5">
@@ -211,7 +211,7 @@ const CareersTwo = () => {
               </div>
               <button
                 type="submit"
-                className="w-full rounded-xl bg-purple-20 px-6 py-3 font-semibold text-white transition-colors hover:bg-purple-20/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"
+                className="micro-button w-full rounded-xl bg-purple-20 px-6 py-3 font-semibold text-white hover:bg-purple-20/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"
               >
                 Submit application
               </button>

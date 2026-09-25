@@ -117,6 +117,61 @@ body { margin: 0; min-width: 320px; background: #fbfaf7; }
 .loader-dot:nth-child(2) { animation-delay: 150ms; }
 .loader-dot:nth-child(3) { animation-delay: 300ms; }
 
+.micro-button {
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.micro-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgb(30 30 47 / 0.14);
+}
+
+.micro-button:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: none;
+}
+
+.micro-nav-link {
+  position: relative;
+}
+
+.micro-nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.35rem;
+  left: 0;
+  height: 2px;
+  content: '';
+  background: #813993;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 220ms ease;
+}
+
+.micro-nav-link:hover::after,
+.micro-nav-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.micro-image {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), filter 500ms ease;
+}
+
+.micro-image:hover {
+  transform: scale(1.025);
+  filter: saturate(1.06);
+}
+
+.micro-social {
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.micro-social:hover {
+  transform: translateY(-3px) rotate(-4deg);
+  opacity: 0.8;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .carousel-focus-enter,
   .carousel-side-enter,
@@ -126,5 +181,12 @@ body { margin: 0; min-width: 320px; background: #fbfaf7; }
   .logo-loader,
   .loader-dot {
     animation: none;
+  }
+
+  .micro-button,
+  .micro-nav-link::after,
+  .micro-image,
+  .micro-social {
+    transition: none;
   }
 }

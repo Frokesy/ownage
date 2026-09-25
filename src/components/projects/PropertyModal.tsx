@@ -75,7 +75,7 @@ const PropertyModal = ({ property, onClose }: PropertyModalProps) => {
           type="button"
           onClick={onClose}
           aria-label="Close property details"
-          className="absolute right-4 top-4 z-20 grid h-11 w-11 place-items-center rounded-full bg-white text-2xl shadow-lg transition-transform hover:scale-105"
+          className="micro-button absolute right-4 top-4 z-20 grid h-11 w-11 place-items-center rounded-full bg-white text-2xl shadow-lg"
         >
           ×
         </button>
@@ -134,7 +134,7 @@ const PropertyModal = ({ property, onClose }: PropertyModalProps) => {
             </div>
 
             <div className=" mt-10">
-              <a href={property.brochure ?? property.img} download={`${property.title}-brochure`} className="inline-flex items-center justify-center gap-3 rounded-xl bg-orange-20 px-6 py-3.5 font-semibold text-black transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-orange-20/90">
+              <a href={property.brochure ?? property.img} download={`${property.title}-brochure`} className="micro-button inline-flex items-center justify-center gap-3 rounded-xl bg-orange-20 px-6 py-3.5 font-semibold text-black hover:bg-orange-20/90">
                 Download brochure
 
                 <DownloadIcon />

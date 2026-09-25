@@ -64,7 +64,7 @@ const Blog = () => {
                 </div>
 
                 {isActive ? (
-                  <Link to={`/blog/${item.slug}`} className="mt-4 inline-block font-semibold text-purple-20 underline decoration-2 underline-offset-4 hover:text-purple-800">Read article</Link>
+                  <Link to={`/blog/${item.slug}`} className="micro-nav-link mt-4 inline-block font-semibold text-purple-20 hover:text-purple-800">Read article</Link>
                 ) : (
                   <button type="button" onClick={() => setActiveId(item.id)} aria-expanded={false} className="mt-4 font-semibold text-purple-20 underline decoration-2 underline-offset-4 hover:text-purple-800">Expand</button>
                 )}
@@ -75,7 +75,7 @@ const Blog = () => {
       </div>
 
       <div className="flex items-center lg:my-20 my-10 justify-center">
-        <Link to="/blog" className="lg:text-[22px] text-[18px] font-semibold text-white bg-purple-20 py-3 px-10 rounded-xl">
+        <Link to="/blog" className="micro-button lg:text-[22px] text-[18px] font-semibold text-white bg-purple-20 py-3 px-10 rounded-xl">
           Explore more
         </Link>
       </div>

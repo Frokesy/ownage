@@ -49,12 +49,12 @@ const TopNav = () => {
         <ul className="hidden items-center gap-8 text-[14px] lg:flex">
           {navItems.map((item) => (
             <li key={item.href}>
-              <Link className="font-medium transition-colors hover:text-purple-20" to={item.href}>{item.label}</Link>
+              <Link className="micro-nav-link font-medium transition-colors hover:text-purple-20" to={item.href}>{item.label}</Link>
             </li>
           ))}
         </ul>
 
-        <Link to="/contact" className="rounded-full bg-orange-20 px-4 py-2 text-[14px] font-bold transition-colors hover:bg-orange-20/90">
+        <Link to="/contact" className="micro-button rounded-full bg-orange-20 px-4 py-2 text-[14px] font-bold hover:bg-orange-20/90">
           Let&apos;s Talk
         </Link>
       </nav>
@@ -73,7 +73,7 @@ const TopNav = () => {
         >
           <div className="flex items-center justify-between border-b border-black/10 pb-5">
             <Link to="/" onClick={() => setIsOpen(false)} aria-label="Ownage Group home"><img src="/logo.svg" alt="" className="w-32" /></Link>
-            <button type="button" aria-label="Close navigation menu" onClick={() => setIsOpen(false)} className="grid h-10 w-10 place-items-center rounded-full bg-purple-20 text-2xl text-white">×</button>
+            <button type="button" aria-label="Close navigation menu" onClick={() => setIsOpen(false)} className="micro-button grid h-10 w-10 place-items-center rounded-full bg-purple-20 text-2xl text-white">×</button>
           </div>
           <ul className="mt-8 flex flex-col">
             {navItems.map((item) => (
@@ -84,7 +84,7 @@ const TopNav = () => {
               </li>
             ))}
           </ul>
-          <Link to="/contact" onClick={() => setIsOpen(false)} className="mt-auto rounded-xl bg-orange-20 px-6 py-3 text-center font-bold">Talk to our team</Link>
+          <Link to="/contact" onClick={() => setIsOpen(false)} className="micro-button mt-auto rounded-xl bg-orange-20 px-6 py-3 text-center font-bold">Talk to our team</Link>
         </aside>
       </div>
     </>

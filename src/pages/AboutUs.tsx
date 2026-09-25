@@ -86,18 +86,18 @@ const AboutUs = () => {
             <img
               src="/about/img-one.png"
               alt="Ownage Group development"
-              className="h-[260px] w-full rounded-xl object-cover sm:h-auto"
+              className="micro-image h-[260px] w-full rounded-xl object-cover sm:h-auto"
             />
             <div className="flex gap-3 sm:gap-5">
               <img
                 src="/about/img-two.png"
                 alt="Modern property exterior"
-                className="h-[150px] w-[40%] rounded-xl object-cover sm:h-auto"
+                className="micro-image h-[150px] w-[40%] rounded-xl object-cover sm:h-auto"
               />
               <img
                 src="/about/img-three.png"
                 alt="Ownage residential development"
-                className="h-[150px] min-w-0 flex-1 rounded-xl object-cover sm:h-auto"
+                className="micro-image h-[150px] min-w-0 flex-1 rounded-xl object-cover sm:h-auto"
               />
             </div>
           </div>
@@ -171,12 +171,12 @@ const AboutUs = () => {
               <img
                 src="/about/img-four.png"
                 alt="A completed Ownage property"
-                className="h-[260px] min-w-0 flex-1 rounded-xl object-cover sm:h-auto"
+                className="micro-image h-[260px] min-w-0 flex-1 rounded-xl object-cover sm:h-auto"
               />
               <img
                 src="/about/img-five.png"
                 alt="An Ownage development site"
-                className="h-[260px] min-w-0 flex-1 rounded-xl object-cover sm:h-auto"
+                className="micro-image h-[260px] min-w-0 flex-1 rounded-xl object-cover sm:h-auto"
               />
             </div>
           </div>

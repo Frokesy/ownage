@@ -26,10 +26,10 @@ const Hero = () => {
         </div>
 
         <div className="flex lg:flex-row flex-col lg:space-x-3 lg:space-y-0 space-y-4 mt-4">
-          <button className="bg-orange-20 py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-orange-20/90">
+          <button className="micro-button bg-orange-20 py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-orange-20/90">
             Explore Our Listing {"->"}
           </button>
-          <button className="text-purple-20 bg-white py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-purple-20/90 hover:text-white">
+          <button className="micro-button text-purple-20 bg-white py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-purple-20/90 hover:text-white">
             About Openage Group
           </button>
         </div>
@@ -39,7 +39,7 @@ const Hero = () => {
             <img
               src="/hero-img-2.png"
               alt="A completed residential development"
-              className="lg:w-[324px] lg:h-[358px] w-[174px] h-[280px]"
+              className="micro-image lg:w-[324px] lg:h-[358px] w-[174px] h-[280px]"
             />
             <div className="absolute hidden lg:block right-10 top-0 z-10">
               <HeroImgAttachmentOne />
@@ -49,7 +49,7 @@ const Hero = () => {
             <img
               src="/hero-img-1.png"
               alt="A residential estate property"
-              className="lg:w-[324px] lg:h-[358px] w-[174px] h-[280px]"
+              className="micro-image lg:w-[324px] lg:h-[358px] w-[174px] h-[280px]"
             />
             <div className="absolute hidden lg:block bottom-0 top-[20vh] left-0 z-10">
               <HeroImgAttachmentTwo />

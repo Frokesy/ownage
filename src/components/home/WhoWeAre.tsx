@@ -10,7 +10,7 @@ const WhoWeAre = () => {
           <h2 className="lg:text-[36px] text-[30px] mt-3 mb-4 font-semibold">
             We Create places Designed for the way People wants to live
           </h2>
-          <button className="bg-purple-20 px-6 rounded-lg space-x-3 flex items-center py-2">
+          <button className="micro-button bg-purple-20 px-6 rounded-lg space-x-3 flex items-center py-2">
             <span className="text-white text-[14px] font-semibold">
               Learn More
             </span>
@@ -29,7 +29,7 @@ const WhoWeAre = () => {
               than properties, we build lifestyles and secure futures.{" "}
             </p>
           </div>
-          <img src="/img-one.png" alt="Who We Are" className="lg:mt-0 mt-10" />
+          <img src="/img-one.png" alt="Who We Are" className="micro-image lg:mt-0 mt-10" />
         </div>
       </div>
     </div>

@@ -12,10 +12,10 @@ const Cta = () => {
           <img src="/people.png" alt="people" />
         </div>
         <div className="lg:w-[60%] w-full flex lg:flex-row flex-col lg:mt-0 mt-10 items-center lg:space-x-10 lg:space-y-0 space-y-4">
-          <button className="bg-purple-20 lg:w-[40%] w-full text-white py-3 px-10 font-semibold rounded-xl lg:text-[18px]">
+          <button className="micro-button bg-purple-20 lg:w-[40%] w-full text-white py-3 px-10 font-semibold rounded-xl lg:text-[18px]">
             See Properties
           </button>
-          <button className="text-purple-20 bg-white w-full lg:w-[40%] py-3 px-10 font-semibold rounded-xl lg:text-[18px]">
+          <button className="micro-button text-purple-20 bg-white w-full lg:w-[40%] py-3 px-10 font-semibold rounded-xl lg:text-[18px]">
             Contact Us
           </button>
         </div>

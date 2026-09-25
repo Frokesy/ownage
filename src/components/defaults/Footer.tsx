@@ -88,10 +88,10 @@ const Footer = () => {
 
       <div className="mx-auto mt-9 flex w-[90%] max-w-7xl flex-col items-center gap-5 border-t-2 border-[#B388BE66] pt-6 sm:flex-row sm:justify-between">
         <div className="flex items-center gap-4" aria-label="Social media links">
-          <a href="#" aria-label="Facebook" className="rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><FacebookIcon /></a>
-          <a href="#" aria-label="Instagram" className="rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><InstagramIcon /></a>
-          <a href="#" aria-label="X" className="rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><XIcon /></a>
-          <a href="#" aria-label="TikTok" className="rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><TikTokIcon /></a>
+          <a href="#" aria-label="Facebook" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><FacebookIcon /></a>
+          <a href="#" aria-label="Instagram" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><InstagramIcon /></a>
+          <a href="#" aria-label="X" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><XIcon /></a>
+          <a href="#" aria-label="TikTok" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><TikTokIcon /></a>
         </div>
 
         <p className="text-center text-[12px] text-[#282828] sm:text-right lg:text-[16px]">

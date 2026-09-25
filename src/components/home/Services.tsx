@@ -41,7 +41,7 @@ const Services = () => {
             type="button"
             aria-label="Show previous properties"
             onClick={() => scrollCards(-1)}
-            className="rounded-full transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500"
+            className="micro-button rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500"
           >
             <LeftArrow />
           </button>
@@ -49,7 +49,7 @@ const Services = () => {
             type="button"
             aria-label="Show next properties"
             onClick={() => scrollCards(1)}
-            className="rounded-full transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500"
+            className="micro-button rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500"
           >
             <RightArrow />
           </button>
@@ -62,11 +62,11 @@ const Services = () => {
         className="scrollbar-hide mx-auto mt-8 flex w-[90vw] max-w-7xl snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-4 sm:mt-10 sm:gap-7"
       >
         {services.map((service) => (
-          <article key={service.name} className="w-[82vw] max-w-[340px] shrink-0 snap-start sm:w-[320px]">
+          <article key={service.name} className="group w-[82vw] max-w-[340px] shrink-0 snap-start transition-transform duration-300 hover:-translate-y-1 sm:w-[320px]">
             <img
               src={service.image}
               alt={`${service.name} property`}
-              className="h-[220px] w-full rounded-2xl object-cover sm:h-[226px]"
+              className="h-[220px] w-full rounded-2xl object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:h-[226px]"
               loading="lazy"
             />
             <h3 className="mt-4 text-[18px] font-semibold uppercase">{service.name}</h3>

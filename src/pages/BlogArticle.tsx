@@ -15,7 +15,7 @@ const BlogArticle = () => {
       <header className="flex justify-center px-4 py-6"><TopNav /></header>
       <main>
         <div className="mx-auto w-[90%] max-w-5xl py-10 text-center sm:py-16 lg:py-20">
-          <Link to="/blog" className="text-sm font-semibold text-purple-20 hover:underline">← Back to all articles</Link>
+          <Link to="/blog" className="micro-nav-link text-sm font-semibold text-purple-20">← Back to all articles</Link>
           <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-purple-20">{post.category}</p>
           <h1 className="mx-auto mt-4 max-w-4xl text-[36px] font-bold leading-tight sm:text-[50px] lg:text-[62px]">{post.title}</h1>
           <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-[#606060]">
@@ -36,7 +36,7 @@ const BlogArticle = () => {
               {section.points && <ul className="mt-6 space-y-3 pl-6 text-[16px] leading-7 sm:text-[18px]">{section.points.map((point) => <li key={point} className="list-disc marker:text-purple-20">{point}</li>)}</ul>}
             </section>
           ))}
-          <div className="mt-14 border-t border-black/10 pt-8"><Link to="/contact" className="inline-flex rounded-xl bg-purple-20 px-6 py-3 font-semibold text-white hover:bg-purple-20/90">Speak with a property advisor</Link></div>
+          <div className="mt-14 border-t border-black/10 pt-8"><Link to="/contact" className="micro-button inline-flex rounded-xl bg-purple-20 px-6 py-3 font-semibold text-white hover:bg-purple-20/90">Speak with a property advisor</Link></div>
         </article>
       </main>
       <Footer />

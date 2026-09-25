@@ -70,7 +70,7 @@ const Careers = () => {
         </p>
         <a
           href="#opportunity"
-          className="rounded-xl bg-purple-20 px-8 py-3 text-[16px] font-semibold text-white transition-colors hover:bg-purple-20/90 sm:px-10 sm:text-[18px]"
+          className="micro-button rounded-xl bg-purple-20 px-8 py-3 text-[16px] font-semibold text-white hover:bg-purple-20/90 sm:px-10 sm:text-[18px]"
         >
           Become a realtor
         </a>
@@ -137,7 +137,7 @@ const Careers = () => {
           <img
             src="/careers/img-four.png"
             alt="Ownage realtor training session"
-            className="w-full rounded-2xl object-cover"
+            className="micro-image w-full rounded-2xl object-cover"
           />
         </div>
         <div className="w-full lg:w-[50%]">
@@ -184,7 +184,7 @@ const Careers = () => {
           <img
             src="/careers/img-five.png"
             alt="Ownage real estate professionals"
-            className="w-full rounded-2xl object-cover"
+            className="micro-image w-full rounded-2xl object-cover"
           />
         </div>
       </section>

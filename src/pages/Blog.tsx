@@ -111,7 +111,7 @@ const SiteBlog = () => {
                 </h2>
                 <Link
                   to={`/blog/${item.slug}`}
-                  className="mt-auto self-start pt-6 font-semibold text-purple-20 underline decoration-2 underline-offset-4 transition-colors hover:text-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20"
+                  className="micro-nav-link mt-auto self-start pt-6 font-semibold text-purple-20 transition-colors hover:text-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20"
                 >
                   <span>Read Article</span>
                 </Link>

@@ -150,7 +150,7 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="w-full rounded-xl bg-purple-20 py-3 text-center font-semibold text-white transition-colors hover:bg-purple-20/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"
+            className="micro-button w-full rounded-xl bg-purple-20 py-3 text-center font-semibold text-white hover:bg-purple-20/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"
           >
             Submit
           </button>

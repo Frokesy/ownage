@@ -9,7 +9,7 @@ const Experts = () => {
         today. Our journey is driven by a simple belief: everyone deserves a
         place they are proud to call their own.
       </p>
-      <button className="rounded-lg text-white px-6 py-2 font-semibold bg-purple-20 transition hover:bg-purple-600">
+      <button className="micro-button rounded-lg text-white px-6 py-2 font-semibold bg-purple-20 hover:bg-purple-600">
         Join the Tribe
       </button>
     </div>
