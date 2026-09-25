@@ -14,6 +14,7 @@ import BlogArticle from "./pages/BlogArticle";
 import Project from "./pages/Project";
 import AboutUs from "./pages/AboutUs";
 import Careers from "./pages/Careers";
+import CareersTwo from "./pages/CareersTwo";
 
 const Home = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => (
     <Route path="/blog" element={<SiteBlog />} />
     <Route path="/blog/:slug" element={<BlogArticle />} />
     <Route path="/careers" element={<Careers />} />
+    <Route path="/careers-2" element={<CareersTwo />} />
     <Route path="/contact" element={<Contact />} />
 
     <Route path="*" element={<Home />} />
