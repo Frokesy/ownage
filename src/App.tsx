@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import SiteBlog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import Project from "./pages/Project";
+import AboutUs from "./pages/AboutUs";
 
 const Home = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => (
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/project" element={<Project />} />
+    <Route path="/about" element={<AboutUs />} />
     <Route path="/blog" element={<SiteBlog />} />
     <Route path="/blog/:slug" element={<BlogArticle />} />
     <Route path="/contact" element={<Contact />} />

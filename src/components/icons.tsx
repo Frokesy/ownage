@@ -586,3 +586,174 @@ export const CalendarIcon = () => (
     </g>
   </svg>
 );
+
+export const MissionIcon = () => (
+  <svg
+    width="56"
+    height="56"
+    viewBox="0 0 56 56"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="0.5"
+      y="0.5"
+      width="55"
+      height="55"
+      rx="11.5"
+      stroke="url(#paint0_linear_31_1281)"
+    />
+    <path
+      d="M38 28H34L31 37L25 19L22 28H18"
+      stroke="#FCCB07"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <defs>
+      <linearGradient
+        id="paint0_linear_31_1281"
+        x1="0"
+        y1="0"
+        x2="56"
+        y2="56"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0.104167" stopColor="#FCCB07" />
+        <stop offset="1" stopColor="#813993" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+export const VisionIcon = () => (
+  <svg
+    width="56"
+    height="56"
+    viewBox="0 0 56 56"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="0.5"
+      y="0.5"
+      width="55"
+      height="55"
+      rx="11.5"
+      stroke="url(#paint0_linear_31_1290)"
+    />
+    <path
+      d="M15 28C15 28 19.16 19 28 19C36.84 19 41 28 41 28C41 28 36.84 37 28 37C19.16 37 15 28 15 28Z"
+      stroke="#FCCB07"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M28.0004 30.647C29.4363 30.647 30.6004 29.4619 30.6004 28C30.6004 26.538 29.4363 25.3529 28.0004 25.3529C26.5645 25.3529 25.4004 26.538 25.4004 28C25.4004 29.4619 26.5645 30.647 28.0004 30.647Z"
+      fill="#FCCB07"
+      stroke="#FCCB07"
+      strokeWidth="6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <defs>
+      <linearGradient
+        id="paint0_linear_31_1290"
+        x1="0"
+        y1="0"
+        x2="56"
+        y2="56"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0.104167" stopColor="#FCCB07" />
+        <stop offset="1" stopColor="#813993" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+export const ExpertiseIcon = () => (
+  <svg
+    width="56"
+    height="56"
+    viewBox="0 0 56 56"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="0.5"
+      y="0.5"
+      width="55"
+      height="55"
+      rx="11.5"
+      stroke="url(#paint0_linear_31_1298)"
+    />
+    <path
+      d="M39 22L29.5 31.5L24.5 26.5L17 34"
+      stroke="#FCCB07"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M33 22H39V28"
+      stroke="#FCCB07"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <defs>
+      <linearGradient
+        id="paint0_linear_31_1298"
+        x1="0"
+        y1="0"
+        x2="56"
+        y2="56"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0.104167" stopColor="#FCCB07" />
+        <stop offset="1" stopColor="#813993" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+export const ValuesIcon = () => (
+  <svg
+    width="56"
+    height="56"
+    viewBox="0 0 56 56"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="0.5"
+      y="0.5"
+      width="55"
+      height="55"
+      rx="11.5"
+      stroke="url(#paint0_linear_31_1307)"
+    />
+    <path
+      d="M34 19C33.2044 19 32.4413 19.3161 31.8787 19.8787C31.3161 20.4413 31 21.2044 31 22V34C31 34.7956 31.3161 35.5587 31.8787 36.1213C32.4413 36.6839 33.2044 37 34 37C34.7956 37 35.5587 36.6839 36.1213 36.1213C36.6839 35.5587 37 34.7956 37 34C37 33.2044 36.6839 32.4413 36.1213 31.8787C35.5587 31.3161 34.7956 31 34 31H22C21.2044 31 20.4413 31.3161 19.8787 31.8787C19.3161 32.4413 19 33.2044 19 34C19 34.7956 19.3161 35.5587 19.8787 36.1213C20.4413 36.6839 21.2044 37 22 37C22.7956 37 23.5587 36.6839 24.1213 36.1213C24.6839 35.5587 25 34.7956 25 34V22C25 21.2044 24.6839 20.4413 24.1213 19.8787C23.5587 19.3161 22.7956 19 22 19C21.2044 19 20.4413 19.3161 19.8787 19.8787C19.3161 20.4413 19 21.2044 19 22C19 22.7956 19.3161 23.5587 19.8787 24.1213C20.4413 24.6839 21.2044 25 22 25H34C34.7956 25 35.5587 24.6839 36.1213 24.1213C36.6839 23.5587 37 22.7956 37 22C37 21.2044 36.6839 20.4413 36.1213 19.8787C35.5587 19.3161 34.7956 19 34 19Z"
+      stroke="#FCCB07"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <defs>
+      <linearGradient
+        id="paint0_linear_31_1307"
+        x1="0"
+        y1="0"
+        x2="56"
+        y2="56"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0.104167" stopColor="#FCCB07" />
+        <stop offset="1" stopColor="#813993" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
