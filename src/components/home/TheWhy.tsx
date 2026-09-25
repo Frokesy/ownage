@@ -1,7 +1,9 @@
 import React from "react";
+import { findCmsSection, useCmsPage } from "../../context/SiteContentContext";
 
 const TheWhy = () => {
-  const reasons = [
+  const section = findCmsSection(useCmsPage("home"), "whyOwnage");
+  const fallbackReasons = [
     {
       id: 1,
       title: "Good Space",
@@ -27,33 +29,39 @@ const TheWhy = () => {
         "Your goals are our priority. We listen, communicate and deliver beyond expectations.",
     },
   ];
+  const reasons = section?.items?.length
+    ? section.items.map((item, index) => ({ id: index + 1, title: item.title || "Reason", description: item.text || "" }))
+    : fallbackReasons;
+  const images = section?.images || [];
   return (
     <div className="bg-[#F6F1FD] lg:py-20 py-10">
       <div className="mx-auto flex w-[90%] max-w-7xl flex-col justify-between lg:flex-row lg:space-x-10">
         <div className="lg:w-[40%]">
           <h2 className="lg:text-[56px] text-[30px] font-semibold">
-            Why Ownage?
+            {section?.title || "Why Ownage?"}
           </h2>
           <p className="lg:text-[18px] text-[14px] font-semibold">
-            We go beyond buildings, we deliver trust experiences, quality, and
-            last longing in every project we undertake.{" "}
+            {section?.subtitle || "We go beyond buildings, we deliver trust experiences, quality, and lasting value in every project we undertake."}
           </p>
 
           <div className="flex space-x-2 mt-8">
             <div className="space-y-2 w-[240px]">
               <img
-                src="/residence.jpg"
+                src={images[0]?.url || "/residence.jpg"}
+                alt={images[0]?.alt || "Ownage residence"}
                 className="w-full h-[208px] object-cover"
               />
               <img
-                src="/hero-img-2.png"
+                src={images[1]?.url || "/hero-img-2.png"}
+                alt={images[1]?.alt || "Ownage development"}
                 className="w-full h-[136px] object-cover"
               />
             </div>
             <div className="space-y-2 w-[240px]">
-              <img src="/court.jpg" className="w-full h-[136px] object-cover" />
+              <img src={images[2]?.url || "/court.jpg"} alt={images[2]?.alt || "Ownage court"} className="w-full h-[136px] object-cover" />
               <img
-                src="/estate.jpg"
+                src={images[3]?.url || "/estate.jpg"}
+                alt={images[3]?.alt || "Ownage estate"}
                 className="w-full h-[208px] object-cover"
               />
             </div>

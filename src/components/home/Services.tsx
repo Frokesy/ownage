@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import { LeftArrow, LocationIcon, RightArrow } from "../icons";
+import { findCmsSection, useCmsPage } from "../../context/SiteContentContext";
 
-const services = [
+const fallbackServices: Array<{ name: string; type: string; location: string; image: string; alt?: string }> = [
   { name: "Ownage Court", type: "Premium residential plots", location: "Lagos, Nigeria", image: "/court.jpg" },
   { name: "Ownage Residence", type: "Contemporary family homes", location: "Lekki, Lagos", image: "/residence.jpg" },
   { name: "The Ownage Estate", type: "Secure serviced plots", location: "Epe, Lagos", image: "/estate.jpg" },
@@ -12,6 +13,10 @@ const services = [
 
 const Services = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const section = findCmsSection(useCmsPage("home"), "services");
+  const services = section?.items?.length
+    ? section.items.map((item) => ({ name: item.title || "Property", type: item.subtitle || "", location: item.location || "", image: item.image?.url || "/court.jpg", alt: item.image?.alt }))
+    : fallbackServices;
 
   const scrollCards = (direction: -1 | 1) => {
     const container = scrollContainerRef.current;
@@ -24,15 +29,14 @@ const Services = () => {
   };
 
   return (
-    <section className="bg-[url('/service-bg.png')] bg-cover bg-center py-12 sm:py-16 lg:py-20">
+    <section className="bg-cover bg-center py-12 sm:py-16 lg:py-20" style={{ backgroundImage: `url(${section?.image?.url || "/service-bg.png"})` }}>
       <div className="mx-auto flex w-[90%] max-w-7xl flex-col gap-7 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-3xl">
           <h2 className="text-[34px] font-semibold leading-tight text-purple-500 sm:text-[44px] lg:text-[56px]">
-            Find Your Next Place
+            {section?.title || "Find Your Next Place"}
           </h2>
           <p className="mt-3 text-base leading-7 sm:text-lg lg:text-[24px] lg:leading-9">
-            Good property is more than four walls and a location. We look for
-            the right place, the right purpose, and the right potential.
+            {section?.subtitle || "Good property is more than four walls and a location. We look for the right place, the right purpose, and the right potential."}
           </p>
         </div>
 
@@ -65,7 +69,7 @@ const Services = () => {
           <article key={service.name} className="group w-[82vw] max-w-[340px] shrink-0 snap-start transition-transform duration-300 hover:-translate-y-1 sm:w-[320px]">
             <img
               src={service.image}
-              alt={`${service.name} property`}
+              alt={service.alt || `${service.name} property`}
               className="h-[220px] w-full rounded-2xl object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:h-[226px]"
               loading="lazy"
             />

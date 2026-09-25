@@ -65,3 +65,86 @@ export const fetchBlogPosts = async (): Promise<BlogPost[]> => {
     content: [],
   }));
 };
+
+export type CmsImage = { url?: string; alt?: string };
+export type CmsItem = {
+  _key?: string;
+  title?: string;
+  subtitle?: string;
+  text?: string;
+  label?: string;
+  location?: string;
+  price?: string;
+  status?: string;
+  value?: string;
+  href?: string;
+  image?: CmsImage;
+  details?: string[];
+  options?: { label?: string; value?: string }[];
+};
+export type CmsSection = {
+  _key?: string;
+  key: string;
+  eyebrow?: string;
+  title?: string;
+  accent?: string;
+  subtitle?: string;
+  body?: string[];
+  buttonLabel?: string;
+  buttonHref?: string;
+  image?: CmsImage;
+  images?: CmsImage[];
+  items?: CmsItem[];
+};
+export type CmsPage = {
+  pageKey: string;
+  hero?: {
+    title?: string;
+    accent?: string;
+    subtitle?: string;
+    eyebrow?: string;
+    primaryLabel?: string;
+    primaryHref?: string;
+    secondaryLabel?: string;
+    secondaryHref?: string;
+    image?: CmsImage;
+    images?: CmsImage[];
+  };
+  sections?: CmsSection[];
+  seo?: { title?: string; description?: string; image?: CmsImage };
+};
+export type SiteSettings = {
+  companyName?: string;
+  logo?: CmsImage;
+  footerDescription?: string;
+  copyright?: string;
+  navigation?: { label: string; href: string }[];
+  footerGroups?: { _key?: string; title?: string; links?: { label: string; href: string; accent?: boolean }[] }[];
+  socialLinks?: { label: string; href: string }[];
+  contactEmail?: string;
+  contactPhone?: string;
+  address?: string;
+};
+
+const siteContentQuery = `{
+  "pages": *[_type == "pageContent"] {
+    pageKey,
+    hero {..., image {..., "url": asset->url}, images[]{..., "url": asset->url}},
+    sections[]{
+      ...,
+      image {..., "url": asset->url},
+      images[]{..., "url": asset->url},
+      items[]{..., image {..., "url": asset->url}}
+    },
+    seo {..., image {..., "url": asset->url}}
+  },
+  "settings": *[_type == "siteSettings"][0] {
+    ...,
+    logo {..., "url": asset->url}
+  }
+}`;
+
+export const fetchSiteContent = async (): Promise<{ pages: CmsPage[]; settings?: SiteSettings }> => {
+  if (!client) return { pages: [] };
+  return client.fetch(siteContentQuery);
+};

@@ -3,12 +3,13 @@ import TopNav from "../components/defaults/TopNav";
 import Footer from "../components/defaults/Footer";
 import { LocationIcon } from "../components/icons";
 import PropertyModal, { type PropertyDetails } from "../components/projects/PropertyModal";
+import { findCmsSection, useCmsPage } from "../context/SiteContentContext";
 
 const Project = () => {
   const [selectedProperty, setSelectedProperty] = useState<PropertyDetails | null>(null);
   const closeModal = useCallback(() => setSelectedProperty(null), []);
 
-  const properties: PropertyDetails[] = [
+  const fallbackProperties: PropertyDetails[] = [
     {
       id: 1,
       img: "/project-dummy.png",
@@ -62,6 +63,24 @@ const Project = () => {
       features: ["Generous plot size", "Premium positioning", "Gated community", "Wide internal roads", "Clear title process", "Dedicated support"],
     },
   ];
+  const page = useCmsPage("projects");
+  const propertySection = findCmsSection(page, "properties");
+  const properties: PropertyDetails[] = propertySection?.items?.length
+    ? propertySection.items.map((item, index) => ({
+        id: item._key || index,
+        img: item.image?.url || "/project-dummy.png",
+        category: item.label || "Real Estate",
+        title: item.title || "Property",
+        desc: item.subtitle || "",
+        location: item.location || "",
+        price: item.price || "Contact us",
+        plotSize: item.value || "",
+        status: item.status || "Available",
+        overview: item.text || "",
+        features: item.details || [],
+        options: item.options?.map((option) => ({ plotSize: option.label || "", price: option.value || "" })),
+      }))
+    : fallbackProperties;
   return (
     <div className="min-h-screen bg-white">
       <header className="flex justify-center px-4 py-6">
@@ -70,15 +89,15 @@ const Project = () => {
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
         <h1 className="text-[38px] font-bold leading-tight sm:text-[50px]">
-          Our <span className="text-purple-20">Projects</span>
+          {page?.hero?.title || <>Our <span className="text-purple-20">Projects</span></>}
         </h1>
         <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
-          See all of our properties
+          {page?.hero?.subtitle || "See all of our properties"}
         </p>
       </div>
 
       <div className="mx-auto flex w-[90%] max-w-7xl flex-col space-y-10 sm:space-y-14 lg:space-y-16">
-        {properties.map((property) => (
+        {properties.map((property, index) => (
           <article
             key={property.id}
             role="button"
@@ -91,12 +110,12 @@ const Project = () => {
                 setSelectedProperty(property);
               }
             }}
-            className={`group flex cursor-pointer items-center rounded-2xl p-2 transition-[background-color,box-shadow] hover:bg-[#F9F9F9] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20 ${property.id % 2 ? 'lg:flex-row flex-col' : 'lg:flex-row-reverse flex-col' } justify-between lg:space-y-0 space-y-8 lg:gap-10`}
+            className={`group flex cursor-pointer items-center rounded-2xl p-2 transition-[background-color,box-shadow] hover:bg-[#F9F9F9] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20 ${index % 2 === 0 ? 'lg:flex-row flex-col' : 'lg:flex-row-reverse flex-col' } justify-between lg:space-y-0 space-y-8 lg:gap-10`}
           >
             <div className="lg:w-[50%]">
               <img
                 src={property.img}
-                alt="property-img"
+                alt={property.title}
                 className="w-full rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]"
               />
             </div>

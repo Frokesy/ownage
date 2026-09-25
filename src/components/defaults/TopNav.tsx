@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HamburgerIcon } from "../icons";
+import { useSiteContent } from "../../context/SiteContentContext";
 
-const navItems = [
+const fallbackNavItems = [
   { label: "Home", href: "/" },
   { label: "Project", href: "/project" },
   { label: "About", href: "/about" },
@@ -14,6 +15,10 @@ const navItems = [
 
 const TopNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { settings } = useSiteContent();
+  const navItems = settings?.navigation?.length ? settings.navigation : fallbackNavItems;
+  const logo = settings?.logo?.url || "/logo.svg";
+  const companyName = settings?.companyName || "Ownage Group";
 
   useEffect(() => {
     if (!isOpen) return;
@@ -42,10 +47,10 @@ const TopNav = () => {
           >
           <HamburgerIcon />
           </button>
-          <Link to="/" aria-label="Ownage Group home"><img src="/logo.svg" alt="" className="w-24" /></Link>
+          <Link to="/" aria-label={`${companyName} home`}><img src={logo} alt="" className="w-24" /></Link>
         </div>
 
-        <Link to="/" aria-label="Ownage Group home" className="hidden lg:block"><img src="/logo.svg" alt="" /></Link>
+        <Link to="/" aria-label={`${companyName} home`} className="hidden lg:block"><img src={logo} alt="" /></Link>
         <ul className="hidden items-center gap-8 text-[14px] lg:flex">
           {navItems.map((item) => (
             <li key={item.href}>
@@ -72,7 +77,7 @@ const TopNav = () => {
           className={`absolute inset-y-0 left-0 flex w-[84%] max-w-sm flex-col bg-white p-6 shadow-2xl transition-transform duration-300 ease-out ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
         >
           <div className="flex items-center justify-between border-b border-black/10 pb-5">
-            <Link to="/" onClick={() => setIsOpen(false)} aria-label="Ownage Group home"><img src="/logo.svg" alt="" className="w-32" /></Link>
+            <Link to="/" onClick={() => setIsOpen(false)} aria-label={`${companyName} home`}><img src={logo} alt="" className="w-32" /></Link>
             <button type="button" aria-label="Close navigation menu" onClick={() => setIsOpen(false)} className="micro-button grid h-10 w-10 place-items-center rounded-full bg-purple-20 text-2xl text-white">×</button>
           </div>
           <ul className="mt-8 flex flex-col">

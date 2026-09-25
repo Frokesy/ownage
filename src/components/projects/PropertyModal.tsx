@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { DownloadIcon, LocationIcon } from "../icons";
 
 export type PropertyDetails = {
-  id: number;
+  id: number | string;
   img: string;
   category: string;
   title: string;

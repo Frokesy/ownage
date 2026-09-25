@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import BlogImage from "../blog/BlogImage";
 import { useBlogPosts } from "../../context/BlogContext";
+import { findCmsSection, useCmsPage } from "../../context/SiteContentContext";
 
 const Blog = () => {
   const { posts } = useBlogPosts();
+  const section = findCmsSection(useCmsPage("home"), "latestNews");
   const featuredPosts = posts.slice(0, 3);
   const [activeId, setActiveId] = useState<number | string | null>(null);
   const resolvedActiveId = featuredPosts.some((post) => post.id === activeId)
@@ -15,10 +17,10 @@ const Blog = () => {
     <section className="mx-auto w-[90%] max-w-7xl py-14 lg:py-24">
       <div className="flex items-center justify-center">
         <h2 className="bg-[url('/purple-text-bg.svg')] bg-contain bg-center bg-no-repeat px-3 py-2 text-[36px] font-semibold text-white sm:text-[48px] lg:text-[62px]">
-          Latest
+          {section?.accent || "Latest"}
         </h2>
         <h2 className="ml-2 text-[36px] font-semibold sm:text-[48px] lg:ml-3 lg:text-[62px]">
-          News
+          {section?.title || "News"}
         </h2>
       </div>
 
@@ -78,8 +80,8 @@ const Blog = () => {
       </div>
 
       <div className="flex items-center lg:my-20 my-10 justify-center">
-        <Link to="/blog" className="micro-button lg:text-[22px] text-[18px] font-semibold text-white bg-purple-20 py-3 px-10 rounded-xl">
-          Explore more
+        <Link to={section?.buttonHref || "/blog"} className="micro-button lg:text-[22px] text-[18px] font-semibold text-white bg-purple-20 py-3 px-10 rounded-xl">
+          {section?.buttonLabel || "Explore more"}
         </Link>
       </div>
     </section>

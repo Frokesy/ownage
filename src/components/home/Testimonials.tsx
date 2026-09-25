@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { findCmsSection, useCmsPage } from "../../context/SiteContentContext";
 
-const testimonials = [
+const fallbackTestimonials = [
   {
     name: "Tunde Adeyemi",
     role: "Homeowner",
@@ -22,6 +23,10 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const section = findCmsSection(useCmsPage("home"), "testimonials");
+  const testimonials = section?.items?.length
+    ? section.items.map((item) => ({ name: item.title || "Client", role: item.subtitle || "Client", image: item.image?.url || "/client.png", quote: item.text || "" }))
+    : fallbackTestimonials;
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -29,19 +34,18 @@ const Testimonials = () => {
       setActiveIndex((current) => (current + 1) % testimonials.length);
     }, 5000);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [testimonials.length]);
 
   const activeTestimonial = testimonials[activeIndex];
 
   return (
-    <section className="bg-[url('/service-bg.png')] bg-cover bg-center py-12 sm:py-16 lg:py-20">
+    <section className="bg-cover bg-center py-12 sm:py-16 lg:py-20" style={{ backgroundImage: `url(${section?.images?.[0]?.url || "/service-bg.png"})` }}>
       <div className="mx-auto w-[90%] max-w-7xl">
         <h2 className="text-center text-[30px] font-semibold sm:text-[40px] lg:text-[50px]">
-          What some of our happy{" "}
-          <span className="text-purple-20">clients say</span>
+          {section?.title || <>What some of our happy <span className="text-purple-20">clients say</span></>}
         </h2>
         <p className="py-3 text-[#0E2824] lg:text-[16px] text-center">
-          Trusted by people, chosen for a reason
+          {section?.subtitle || "Trusted by people, chosen for a reason"}
         </p>
 
         <div className="mt-8 flex w-full flex-col items-center justify-between gap-8 lg:mt-12 lg:flex-row lg:gap-10">
@@ -73,7 +77,7 @@ const Testimonials = () => {
           </div>
 
           <div className="w-full max-w-[260px] lg:w-[30%] lg:max-w-none">
-            <img src="/people-grouped.png" alt="Ownage client community" className="w-full object-contain" />
+            <img src={section?.image?.url || "/people-grouped.png"} alt={section?.image?.alt || "Ownage client community"} className="w-full object-contain" />
           </div>
         </div>
       </div>

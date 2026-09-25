@@ -6,10 +6,12 @@ import { CalendarIcon, SmallAvatarIcon } from "../components/icons";
 import { blogCategories } from "../data/blog";
 import BlogImage from "../components/blog/BlogImage";
 import { useBlogPosts } from "../context/BlogContext";
+import { useCmsPage } from "../context/SiteContentContext";
 
 const SiteBlog = () => {
   const [activeCategory, setActiveCategory] = useState<string>(blogCategories[0]);
   const { posts: blogPosts, isLoading } = useBlogPosts();
+  const page = useCmsPage("blog");
   const visibleItems =
     activeCategory === blogCategories[0]
       ? blogPosts
@@ -27,10 +29,10 @@ const SiteBlog = () => {
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
         <h1 className="text-[38px] font-bold leading-tight sm:text-[50px]">
-          Blog Articles
+          {page?.hero?.title || "Blog Articles"}
         </h1>
         <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
-          Perspectives and practical insights on real estate
+          {page?.hero?.subtitle || "Perspectives and practical insights on real estate"}
         </p>
       </div>
 

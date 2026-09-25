@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FacebookIcon, InstagramIcon, TikTokIcon, XIcon } from "../icons";
+import { useSiteContent } from "../../context/SiteContentContext";
 
-const footerGroups = [
+const fallbackFooterGroups = [
   {
     id: "explore",
     title: "Explore",
@@ -38,15 +39,25 @@ const footerGroups = [
 
 const Footer = () => {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const { settings } = useSiteContent();
+  const footerGroups = settings?.footerGroups?.length
+    ? settings.footerGroups.map((group, index) => ({
+        id: group._key || String(index),
+        title: group.title || "Links",
+        items: group.links || [],
+      }))
+    : fallbackFooterGroups;
+  const logo = settings?.logo?.url || "/logo.svg";
+  const socialHref = (label: string) =>
+    settings?.socialLinks?.find((item) => item.label.toLowerCase() === label.toLowerCase())?.href || "#";
 
   return (
     <footer className="bg-[#E6D7E9] py-10 sm:py-12">
       <div className="mx-auto w-[90%] max-w-7xl lg:grid lg:grid-cols-4 lg:gap-10">
         <div className="max-w-md space-y-4 pb-8 lg:pb-0">
-          <img src="/logo.svg" alt="Ownage Group" className="h-auto w-32 sm:w-auto" />
+          <img src={logo} alt={settings?.companyName || "Ownage Group"} className="h-auto w-32 sm:w-auto" />
           <p className="text-[14px] leading-6 text-[#282828] sm:text-[16px] sm:leading-7">
-            Ownage Group is a real estate development company committed to
-            creating exceptional spaces.
+            {settings?.footerDescription || "Ownage Group is a real estate development company committed to creating exceptional spaces."}
           </p>
         </div>
 
@@ -95,14 +106,14 @@ const Footer = () => {
 
       <div className="mx-auto mt-9 flex w-[90%] max-w-7xl flex-col items-center gap-5 border-t-2 border-[#B388BE66] pt-6 sm:flex-row sm:justify-between">
         <div className="flex items-center gap-4" aria-label="Social media links">
-          <a href="#" aria-label="Facebook" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><FacebookIcon /></a>
-          <a href="#" aria-label="Instagram" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><InstagramIcon /></a>
-          <a href="#" aria-label="X" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><XIcon /></a>
-          <a href="#" aria-label="TikTok" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><TikTokIcon /></a>
+          <a href={socialHref("Facebook")} aria-label="Facebook" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><FacebookIcon /></a>
+          <a href={socialHref("Instagram")} aria-label="Instagram" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><InstagramIcon /></a>
+          <a href={socialHref("X")} aria-label="X" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><XIcon /></a>
+          <a href={socialHref("TikTok")} aria-label="TikTok" className="micro-social rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"><TikTokIcon /></a>
         </div>
 
         <p className="text-center text-[12px] text-[#282828] sm:text-right lg:text-[16px]">
-          Ownage Group 2026 © All Rights Reserved
+          {settings?.copyright || "Ownage Group 2026 © All Rights Reserved"}
         </p>
       </div>
     </footer>
