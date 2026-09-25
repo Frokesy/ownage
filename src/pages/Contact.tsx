@@ -1,13 +1,35 @@
+import { useState } from "react";
+import type { FormEvent } from "react";
 import Footer from "../components/defaults/Footer";
 import TopNav from "../components/defaults/TopNav";
 import { findCmsSection, useCmsPage, useSiteContent } from "../context/SiteContentContext";
+import { sendEmailForm } from "../lib/email";
 
 const Contact = () => {
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [formMessage, setFormMessage] = useState("");
   const page = useCmsPage("contact");
   const intro = findCmsSection(page, "intro");
   const interestOptions = findCmsSection(page, "interestOptions")?.items;
   const budgetOptions = findCmsSection(page, "budgetOptions")?.items;
   const { settings } = useSiteContent();
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setFormStatus("sending");
+    setFormMessage("");
+    try {
+      await sendEmailForm(form, "contact");
+      form.reset();
+      setFormStatus("success");
+      setFormMessage("Thanks—your message has been sent. We’ll get back to you shortly.");
+    } catch (error) {
+      console.error("Contact form email failed", error);
+      setFormStatus("error");
+      setFormMessage(error instanceof Error ? error.message : "We couldn’t send your message. Please try again.");
+    }
+  };
   return (
     <div className="min-h-screen bg-white">
       <header className="flex justify-center px-4 py-6">
@@ -69,7 +91,11 @@ const Contact = () => {
           </div>
         </div>
 
-        <form className="w-full space-y-5 lg:w-[50%]">
+        <form onSubmit={handleSubmit} className="w-full space-y-5 lg:w-[50%]">
+          <div className="absolute -left-[9999px]" aria-hidden="true">
+            <label htmlFor="contact-website">Website</label>
+            <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
           <div className="space-y-3">
             <label className="font-medium" htmlFor="name">
               Name *
@@ -154,10 +180,16 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="micro-button w-full rounded-xl bg-purple-20 py-3 text-center font-semibold text-white hover:bg-purple-20/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20"
+            disabled={formStatus === "sending"}
+            className="micro-button w-full rounded-xl bg-purple-20 py-3 text-center font-semibold text-white hover:bg-purple-20/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-20 disabled:cursor-wait disabled:opacity-60"
           >
-            Submit
+            {formStatus === "sending" ? "Sending…" : "Submit"}
           </button>
+          {formMessage && (
+            <p role="status" aria-live="polite" className={`rounded-lg px-4 py-3 text-sm ${formStatus === "success" ? "bg-green-50 text-green-800" : "bg-red-50 text-red-800"}`}>
+              {formMessage}
+            </p>
+          )}
         </form>
       </main>
 

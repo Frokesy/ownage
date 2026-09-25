@@ -48,3 +48,28 @@ Use these exact section keys so each editable section is placed in its existing 
 | Contact | `intro`, `interestOptions`, `budgetOptions` |
 
 For repeatable entries, use **Cards / entries / options**. The same structured item editor adapts to properties, team members, testimonials, feature cards, select options, and footer-style links. Images uploaded in Studio are served from Sanity's image CDN, while local images remain as fallbacks.
+
+## Form email delivery
+
+The contact and realtor application forms post to the included Node server, which sends mail directly through your SMTP account. Copy the dummy settings from `.env.example` into `.env.local` and replace them with the owner's mail-server details:
+
+```env
+APP_ORIGIN=http://localhost:5173
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=website@example.com
+SMTP_PASSWORD=replace-with-smtp-password
+SMTP_FROM="Ownage Website <website@example.com>"
+CONTACT_FORM_EMAIL=contact@example.com
+REALTOR_FORM_EMAIL=careers@example.com
+```
+
+For local development, run the frontend and mail server in separate terminals:
+
+```bash
+npm run dev:server
+npm run dev
+```
+
+Run `npm run build && npm start` in production. The server hosts the built SPA and both form endpoints. `CONTACT_FORM_EMAIL` and `REALTOR_FORM_EMAIL` intentionally point to different inboxes. SMTP credentials are server-only—never rename them with a `VITE_` prefix or commit `.env.local`.

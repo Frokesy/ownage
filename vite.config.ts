@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => {
   const companyName = env.VITE_COMPANY_NAME || 'Haven Estate Management'
 
   return {
+    server: { proxy: { '/api': 'http://localhost:8787' } },
     plugins: [
       react(),
       {

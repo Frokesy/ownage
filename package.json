@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "node --env-file-if-exists=.env.local server.mjs",
+    "start": "node --env-file-if-exists=.env.local server.mjs",
     "build": "npm run seo:generate && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -19,6 +21,8 @@
     "@portabletext/types": "^4.0.2",
     "@sanity/client": "^8.7.0",
     "@vitejs/plugin-react": "latest",
+    "express": "^5.2.1",
+    "nodemailer": "^10.0.10",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "^7.18.4",
@@ -27,7 +31,9 @@
   },
   "devDependencies": {
     "@eslint/js": "latest",
+    "@types/express": "^5.0.6",
     "@types/node": "latest",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
