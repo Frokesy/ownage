@@ -4,6 +4,7 @@ import TopNav from "../components/defaults/TopNav";
 import Footer from "../components/defaults/Footer";
 import { CalendarIcon, SmallAvatarIcon } from "../components/icons";
 import { blogCategories, blogPosts } from "../data/blog";
+import BlogImage from "../components/blog/BlogImage";
 
 const SiteBlog = () => {
   const [activeCategory, setActiveCategory] = useState<string>(blogCategories[0]);
@@ -85,7 +86,7 @@ const SiteBlog = () => {
                 key={item.id}
                 className="group flex flex-col overflow-hidden rounded-xl border border-[#ccc] bg-white p-3 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none"
               >
-                <img
+                <BlogImage
                   src={item.img}
                   alt=""
                   className="h-[210px] w-full rounded-lg object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:h-[232px]"

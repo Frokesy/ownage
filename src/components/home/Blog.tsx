@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { blogPosts } from "../../data/blog";
+import BlogImage from "../blog/BlogImage";
 
 const featuredPosts = blogPosts.slice(0, 3);
 
@@ -31,7 +32,7 @@ const Blog = () => {
                   : "md:basis-1/4 md:hover:-translate-y-1 md:hover:shadow-lg"
               }`}
             >
-              <img
+              <BlogImage
                 src={item.img}
                 alt=""
                 className={`w-full object-cover transition-[height,filter,transform] duration-500 ease-out motion-reduce:transition-none ${

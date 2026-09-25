@@ -1,39 +1,30 @@
-import { Route, Routes } from "react-router-dom";
-import Hero from "./components/defaults/Hero";
-import WhoWeAre from "./components/home/WhoWeAre";
-import Services from "./components/home/Services";
-import TheWhy from "./components/home/TheWhy";
-import Experts from "./components/home/Experts";
-import Testimonials from "./components/home/Testimonials";
-import Blog from "./components/home/Blog";
-import Cta from "./components/home/Cta";
-import Footer from "./components/defaults/Footer";
-import Contact from "./pages/Contact";
-import SiteBlog from "./pages/Blog";
-import BlogArticle from "./pages/BlogArticle";
-import Project from "./pages/Project";
-import AboutUs from "./pages/AboutUs";
-import Careers from "./pages/Careers";
-import CareersTwo from "./pages/CareersTwo";
+import { lazy, Suspense, useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import BlogPageSkeleton from "./components/blog/BlogPageSkeleton";
+import PageLoader from "./components/defaults/PageLoader";
 
-const Home = () => {
+const Home = lazy(() => import("./pages/Home"));
+const Contact = lazy(() => import("./pages/Contact"));
+const SiteBlog = lazy(() => import("./pages/Blog"));
+const BlogArticle = lazy(() => import("./pages/BlogArticle"));
+const Project = lazy(() => import("./pages/Project"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Careers = lazy(() => import("./pages/Careers"));
+const CareersTwo = lazy(() => import("./pages/CareersTwo"));
+
+const App = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [location.pathname]);
+
+  const fallback = location.pathname.startsWith("/blog") ? <BlogPageSkeleton /> : <PageLoader />;
+
   return (
-    <div>
-      <Hero />
-      <WhoWeAre />
-      <Services />
-      <TheWhy />
-      <Experts />
-      <Testimonials />
-      <Blog />
-      <Cta />
-      <Footer />
-    </div>
-  );
-};
-
-const App = () => (
-  <Routes>
+  <Suspense fallback={fallback}>
+    <div key={location.pathname} className="page-enter">
+    <Routes location={location}>
     <Route path="/" element={<Home />} />
     <Route path="/project" element={<Project />} />
     <Route path="/about" element={<AboutUs />} />
@@ -44,7 +35,10 @@ const App = () => (
     <Route path="/contact" element={<Contact />} />
 
     <Route path="*" element={<Home />} />
-  </Routes>
-);
+    </Routes>
+    </div>
+  </Suspense>
+  );
+};
 
 export default App;

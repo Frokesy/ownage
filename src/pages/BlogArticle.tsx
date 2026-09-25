@@ -2,6 +2,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import Footer from "../components/defaults/Footer";
 import TopNav from "../components/defaults/TopNav";
 import { getBlogPost } from "../data/blog";
+import BlogImage from "../components/blog/BlogImage";
 
 const BlogArticle = () => {
   const { slug = "" } = useParams();
@@ -22,7 +23,7 @@ const BlogArticle = () => {
           </div>
         </div>
 
-        <img src={post.img} alt="" className="h-[300px] w-full object-cover sm:h-[480px] lg:h-[620px]" />
+        <BlogImage src={post.img} alt="" eager className="h-[300px] w-full object-cover sm:h-[480px] lg:h-[620px]" />
 
         <article className="mx-auto w-[90%] py-12 sm:py-16 lg:w-[60%] lg:max-w-4xl lg:py-24">
           <p className="text-xl font-medium leading-8 text-[#282828] sm:text-2xl sm:leading-10">{post.excerpt}</p>
