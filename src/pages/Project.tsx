@@ -110,7 +110,7 @@ const Project = () => {
                 setSelectedProperty(property);
               }
             }}
-            className={`group flex cursor-pointer items-center rounded-2xl p-2 transition-[background-color,box-shadow] hover:bg-[#F9F9F9] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20 ${index % 2 === 0 ? 'lg:flex-row flex-col' : 'lg:flex-row-reverse flex-col' } justify-between lg:space-y-0 space-y-8 lg:gap-10`}
+            className={`project-card group flex cursor-pointer items-center rounded-2xl p-2 transition-[background-color,box-shadow] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20 ${index % 2 === 0 ? 'lg:flex-row flex-col' : 'lg:flex-row-reverse flex-col' } justify-between lg:space-y-0 space-y-8 lg:gap-10`}
           >
             <div className="lg:w-[50%]">
               <img

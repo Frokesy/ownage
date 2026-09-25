@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import BlogPageSkeleton from "./components/blog/BlogPageSkeleton";
 import PageLoader from "./components/defaults/PageLoader";
 import { useSiteContent } from "./context/SiteContentContext";
+import ThemeToggle from "./components/defaults/ThemeToggle";
 
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -12,6 +13,7 @@ const Project = lazy(() => import("./pages/Project"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Careers = lazy(() => import("./pages/Careers"));
 const CareersTwo = lazy(() => import("./pages/CareersTwo"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => {
   const location = useLocation();
@@ -34,6 +36,7 @@ const App = () => {
   const fallback = location.pathname.startsWith("/blog") ? <BlogPageSkeleton /> : <PageLoader />;
 
   return (
+  <>
   <Suspense fallback={fallback}>
     <div key={location.pathname} className="page-enter">
     <Routes location={location}>
@@ -46,10 +49,12 @@ const App = () => {
     <Route path="/careers-2" element={<CareersTwo />} />
     <Route path="/contact" element={<Contact />} />
 
-    <Route path="*" element={<Home />} />
+    <Route path="*" element={<NotFound />} />
     </Routes>
     </div>
   </Suspense>
+  <ThemeToggle />
+  </>
   );
 };
 

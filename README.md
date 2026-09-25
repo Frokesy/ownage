@@ -73,3 +73,7 @@ npm run dev
 ```
 
 Run `npm run build && npm start` in production. The server hosts the built SPA and both form endpoints. `CONTACT_FORM_EMAIL` and `REALTOR_FORM_EMAIL` intentionally point to different inboxes. SMTP credentials are server-only—never rename them with a `VITE_` prefix or commit `.env.local`.
+
+## Production route refreshes
+
+The Node production server falls back to `dist/index.html` for client-side routes such as `/blog` and `/project`. `public/_redirects` provides the equivalent fallback on Netlify-compatible hosts, while `vercel.json` supplies it on Vercel. If another static host is used, configure its unknown-route fallback or rewrite to `/index.html`; a redirect response is not sufficient.

@@ -35,7 +35,7 @@ const TopNav = () => {
 
   return (
     <>
-      <nav className="flex min-w-[90vw] items-center justify-between rounded-full bg-white p-2 shadow-sm lg:min-w-[70vw]" aria-label="Primary navigation">
+      <nav className="theme-nav flex min-w-[90vw] items-center justify-between rounded-full bg-white p-2 shadow-sm lg:min-w-[70vw]" aria-label="Primary navigation">
         <div className="flex items-center gap-2 lg:hidden">
           <button
             type="button"
@@ -74,7 +74,7 @@ const TopNav = () => {
         <aside
           id="mobile-navigation"
           aria-label="Mobile navigation"
-          className={`absolute inset-y-0 left-0 flex w-[84%] max-w-sm flex-col bg-white p-6 shadow-2xl transition-transform duration-300 ease-out ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+          className={`theme-nav absolute inset-y-0 left-0 flex w-[84%] max-w-sm flex-col bg-white p-6 shadow-2xl transition-transform duration-300 ease-out ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
         >
           <div className="flex items-center justify-between border-b border-black/10 pb-5">
             <Link to="/" onClick={() => setIsOpen(false)} aria-label={`${companyName} home`}><img src={logo} alt="" className="w-32" /></Link>

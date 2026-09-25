@@ -8,8 +8,8 @@ const Hero = () => {
   const hero = useCmsPage("home")?.hero;
   const heroImages = hero?.images || [];
   return (
-    <div className="bg-cover bg-center min-h-screen lg:pb-20 pb-10" style={{ backgroundImage: `url(${hero?.image?.url || "/hero.png"})` }}>
-      <div className="flex justify-center items-center mt-6">
+    <div className="theme-static-light bg-cover bg-center min-h-screen lg:pb-20 pb-10" style={{ backgroundImage: `url(${hero?.image?.url || "/hero.png"})` }}>
+      <div className="flex justify-center items-center pt-6">
         <TopNav />
       </div>
 

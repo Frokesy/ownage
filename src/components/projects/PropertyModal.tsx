@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { DownloadIcon, LocationIcon } from "../icons";
 
 export type PropertyDetails = {
@@ -52,9 +53,9 @@ const PropertyModal = ({ property, onClose }: PropertyModalProps) => {
     { plotSize: "600 sqm", price: property.price },
   ];
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-[70] flex items-end justify-center p-0 sm:items-center sm:p-6"
+      className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6"
       role="presentation"
     >
       <button
@@ -68,7 +69,7 @@ const PropertyModal = ({ property, onClose }: PropertyModalProps) => {
         role="dialog"
         aria-modal="true"
         aria-labelledby="property-modal-title"
-        className="modal-panel-enter relative z-10 max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white shadow-2xl sm:max-w-5xl sm:rounded-3xl"
+        className="modal-panel-enter relative z-10 max-h-[92vh] w-full overflow-y-auto rounded-3xl bg-white shadow-2xl sm:max-w-5xl"
       >
         <button
           ref={closeButtonRef}
@@ -143,7 +144,8 @@ const PropertyModal = ({ property, onClose }: PropertyModalProps) => {
           </div>
         </div>
       </section>
-    </div>
+    </div>,
+    document.body,
   );
 };
 
