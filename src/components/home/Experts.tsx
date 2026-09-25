@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Experts = () => {
   const expertCopy = (
     <div className="relative max-w-xl space-y-6 lg:px-10">
@@ -9,9 +11,9 @@ const Experts = () => {
         today. Our journey is driven by a simple belief: everyone deserves a
         place they are proud to call their own.
       </p>
-      <button className="micro-button rounded-lg text-white px-6 py-2 font-semibold bg-purple-20 hover:bg-purple-600">
+      <Link to="/careers-2" className="micro-button inline-flex rounded-lg text-white px-6 py-2 font-semibold bg-purple-20 hover:bg-purple-600">
         Join the Tribe
-      </button>
+      </Link>
     </div>
   );
 

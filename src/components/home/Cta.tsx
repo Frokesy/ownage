@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Cta = () => {
   return (
@@ -12,12 +13,12 @@ const Cta = () => {
           <img src="/people.png" alt="people" />
         </div>
         <div className="flex w-full flex-col items-center gap-4 lg:w-[60%] lg:flex-row lg:gap-10">
-          <button className="micro-button bg-purple-20 lg:w-[40%] w-full text-white py-3 px-10 font-semibold rounded-xl lg:text-[18px]">
+          <Link to="/project" className="micro-button bg-purple-20 lg:w-[40%] w-full text-center text-white py-3 px-10 font-semibold rounded-xl lg:text-[18px]">
             See Properties
-          </button>
-          <button className="micro-button text-purple-20 bg-white w-full lg:w-[40%] py-3 px-10 font-semibold rounded-xl lg:text-[18px]">
+          </Link>
+          <Link to="/contact" className="micro-button text-purple-20 bg-white w-full text-center lg:w-[40%] py-3 px-10 font-semibold rounded-xl lg:text-[18px]">
             Contact Us
-          </button>
+          </Link>
         </div>
       </div>
     </div>

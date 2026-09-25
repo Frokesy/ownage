@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { FacebookIcon, InstagramIcon, TikTokIcon, XIcon } from "../icons";
 
 const footerGroups = [
@@ -73,9 +74,15 @@ const Footer = () => {
                   <ul className="space-y-3 pb-5 lg:mt-4 lg:space-y-4 lg:pb-0">
                     {group.items.map((item) => (
                       <li key={item.label}>
-                        <a href={item.href} className={`text-[14px] leading-6 transition-colors hover:text-purple-20 lg:text-[16px] ${item.accent ? "font-semibold text-purple-20 underline underline-offset-4" : "text-[#282828]"}`}>
-                          {item.label}
-                        </a>
+                        {item.href.startsWith("/") ? (
+                          <Link to={item.href} className={`text-[14px] leading-6 transition-colors hover:text-purple-20 lg:text-[16px] ${item.accent ? "font-semibold text-purple-20 underline underline-offset-4" : "text-[#282828]"}`}>
+                            {item.label}
+                          </Link>
+                        ) : (
+                          <a href={item.href} className={`text-[14px] leading-6 transition-colors hover:text-purple-20 lg:text-[16px] ${item.accent ? "font-semibold text-purple-20 underline underline-offset-4" : "text-[#282828]"}`}>
+                            {item.label}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>

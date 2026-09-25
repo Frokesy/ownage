@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { DiagArrow } from "../icons";
 
 const WhoWeAre = () => {
@@ -10,12 +11,12 @@ const WhoWeAre = () => {
           <h2 className="lg:text-[36px] text-[30px] mt-3 mb-4 font-semibold">
             We Create places Designed for the way People wants to live
           </h2>
-          <button className="micro-button bg-purple-20 px-6 rounded-lg space-x-3 flex items-center py-2">
+          <Link to="/about" className="micro-button bg-purple-20 px-6 rounded-lg space-x-3 flex w-fit items-center py-2">
             <span className="text-white text-[14px] font-semibold">
               Learn More
             </span>
             <DiagArrow />
-          </button>
+          </Link>
         </div>
         <div className="mt-8 flex flex-col items-center lg:mt-0 lg:w-[65%] lg:flex-row lg:space-x-6">
           <div className="space-y-4">

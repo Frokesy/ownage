@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import TopNav from "./TopNav";
 import { HeroImgAttachmentOne, HeroImgAttachmentTwo } from "../icons";
 
@@ -26,12 +27,12 @@ const Hero = () => {
         </div>
 
         <div className="flex lg:flex-row flex-col lg:space-x-3 lg:space-y-0 space-y-4 mt-4">
-          <button className="micro-button bg-orange-20 py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-orange-20/90">
+          <Link to="/project" className="micro-button bg-orange-20 py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-orange-20/90">
             Explore Our Listing {"->"}
-          </button>
-          <button className="micro-button text-purple-20 bg-white py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-purple-20/90 hover:text-white">
+          </Link>
+          <Link to="/about" className="micro-button text-purple-20 bg-white py-2 px-6 rounded-full text-[14px] font-semibold hover:bg-purple-20/90 hover:text-white">
             About Openage Group
-          </button>
+          </Link>
         </div>
 
         <div className="my-6 flex lg:gap-10 gap-4 flex-row">
