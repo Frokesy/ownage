@@ -11,6 +11,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "seo:generate": "node scripts/generate-seo.mjs",
+    "smtp:verify": "node --env-file=.env.local scripts/verify-smtp.mjs",
     "studio:dev": "npm --prefix studio run dev",
     "studio:build": "npm --prefix studio run build",
     "studio:deploy": "npm --prefix studio run deploy"

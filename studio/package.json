@@ -6,14 +6,15 @@
     "dev": "sanity dev",
     "start": "sanity start",
     "build": "sanity build",
-    "deploy": "sanity deploy"
+    "deploy": "sanity deploy",
+    "seed": "node --env-file=.env seed/seed.mjs"
   },
   "dependencies": {
     "@sanity/vision": "latest",
     "react": "latest",
     "react-dom": "latest",
     "sanity": "latest",
-    "styled-components": "latest"
+    "styled-components": "^6.5.3"
   },
   "devDependencies": {
     "@types/react": "latest",

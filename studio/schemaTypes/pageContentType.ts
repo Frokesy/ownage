@@ -25,6 +25,8 @@ export const pageContentType = defineType({
         layout: "dropdown",
       },
       validation: (rule) => rule.required(),
+      hidden: true,
+      readOnly: true,
     }),
     defineField({
       name: "hero",
@@ -54,7 +56,7 @@ export const pageContentType = defineType({
           title: "Content section",
           type: "object",
           fields: [
-            requiredText("key", "Section key"),
+            defineField({ name: "key", title: "Section key", type: "string", hidden: true, readOnly: true, validation: (rule) => rule.required() }),
             defineField({ name: "eyebrow", title: "Small heading", type: "string" }),
             defineField({ name: "title", title: "Heading", type: "string" }),
             defineField({ name: "accent", title: "Highlighted words", type: "string" }),

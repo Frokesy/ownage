@@ -12,7 +12,7 @@ const client = projectId
       projectId,
       dataset,
       apiVersion: "2026-09-01",
-      useCdn: true,
+      useCdn: false,
     })
   : null;
 

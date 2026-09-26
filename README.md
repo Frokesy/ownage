@@ -28,7 +28,25 @@ The website reads published blog posts from Sanity and falls back to `src/data/b
 4. Install the Studio dependencies with `npm --prefix studio install`.
 5. Start the editor with `npm run studio:dev`, create an author, and publish blog posts.
 
+### Seed the existing website content
+
+The Studio uses fixed entries for Site settings and each website page. To populate them with the current UI copy and upload the current local images, create an Editor token under **Sanity Manage → API → Tokens** and add it only to `studio/.env`:
+
+```env
+SANITY_API_WRITE_TOKEN=your-editor-token
+```
+
+Then run the one-time import:
+
+```bash
+npm --prefix studio run seed
+```
+
+The seed refuses to overwrite existing page documents. `npm --prefix studio run seed -- --force` restores the starter content and should only be used when overwriting those documents is intentional. Remove the write token from `studio/.env` after the import; the Studio itself authenticates users through Sanity login.
+
 If the website and Studio run on different domains, add the website origin under **API > CORS origins** in the Sanity project settings. Keep `VITE_SANITY_DATASET=production` and `SANITY_STUDIO_DATASET=production` in sync.
+
+For local development, add `http://localhost:5173` as a CORS origin. A browser error containing `Access-Control-Allow-Origin missing` and status `403` means this project setting is absent; changing React code will not resolve it.
 
 Deploy the owner-facing editor with `npm run studio:deploy`. The public website only uses unauthenticated, read-only queries; do not add a Sanity write token to any `VITE_` environment variable.
 
@@ -73,6 +91,8 @@ npm run dev
 ```
 
 Run `npm run build && npm start` in production. The server hosts the built SPA and both form endpoints. `CONTACT_FORM_EMAIL` and `REALTOR_FORM_EMAIL` intentionally point to different inboxes. SMTP credentials are server-only—never rename them with a `VITE_` prefix or commit `.env.local`.
+
+For Resend SMTP, use `smtp.resend.com`, username `resend`, an API key beginning with `re_` as the password, and either port `465` with `SMTP_SECURE=true` or port `587` with `SMTP_SECURE=false`. Run `npm run smtp:verify` to test connection and authentication without sending mail. Successful authentication does not prove that `SMTP_FROM` is permitted: use `onboarding@resend.dev` during Resend testing, or an address on a verified domain for normal delivery.
 
 ## Production route refreshes
 

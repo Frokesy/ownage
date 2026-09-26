@@ -19,15 +19,39 @@ export const SiteContentProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (!isSanityConfigured) return;
     let active = true;
-    fetchSiteContent()
-      .then((result) => {
+    let requestInFlight = false;
+
+    const refresh = async () => {
+      if (requestInFlight) return;
+      requestInFlight = true;
+      try {
+        const result = await fetchSiteContent();
         if (!active) return;
         setPages(Object.fromEntries(result.pages.map((page) => [page.pageKey, page])));
         setSettings(result.settings);
-      })
-      .catch((error) => console.error("Could not load website content from Sanity.", error))
-      .finally(() => active && setIsLoading(false));
-    return () => { active = false; };
+      } catch (error) {
+        console.error("Could not load website content from Sanity.", error);
+      } finally {
+        requestInFlight = false;
+        if (active) setIsLoading(false);
+      }
+    };
+
+    const refreshWhenVisible = () => {
+      if (document.visibilityState === "visible") void refresh();
+    };
+
+    void refresh();
+    window.addEventListener("focus", refresh);
+    document.addEventListener("visibilitychange", refreshWhenVisible);
+    const timer = window.setInterval(refresh, 30_000);
+
+    return () => {
+      active = false;
+      window.removeEventListener("focus", refresh);
+      document.removeEventListener("visibilitychange", refreshWhenVisible);
+      window.clearInterval(timer);
+    };
   }, []);
 
   const value = useMemo(() => ({ pages, settings, isLoading }), [pages, settings, isLoading]);
