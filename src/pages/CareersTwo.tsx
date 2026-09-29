@@ -74,7 +74,7 @@ const CareersTwo = () => {
       </header>
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h1 className="text-[38px] font-bold leading-tight sm:text-[50px]">
+        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
           {page?.hero?.title || <>Start your <span className="text-purple-20">Real Estate</span> Journey</>}
         </h1>
         <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
@@ -94,7 +94,7 @@ const CareersTwo = () => {
             <p className="uppercase text-purple-20 font-semibold">
               {howItWorks?.eyebrow || "Your Journey Starts here"}
             </p>
-            <h2 className="lg:text-[36px] text-[30px] font-semibold">
+            <h2 className="lexend lg:text-[36px] text-[30px] font-semibold">
               {howItWorks?.title || "How it Works"}
             </h2>
             <p className="mt-3 text-[16px] leading-7 sm:text-[18px] lg:text-[22px] lg:leading-9">
@@ -109,7 +109,7 @@ const CareersTwo = () => {
                 key={step.id}
               >
                 <div aria-hidden="true">{step.icon}</div>
-                <h2 className="lg:text-[18px] text-[16px] uppercase font-semibold">
+                <h2 className="lexend lg:text-[18px] text-[16px] uppercase font-semibold">
                   {step.title}
                 </h2>
                 <p className="text-[14px] leading-6 lg:text-[16px]">
@@ -129,7 +129,7 @@ const CareersTwo = () => {
               <p className="uppercase text-purple-20 font-semibold">
                 {application?.eyebrow || "Apply Now"}
               </p>
-              <h2 className="lg:text-[36px] text-[30px] font-semibold">
+              <h2 className="lexend lg:text-[36px] text-[30px] font-semibold">
                 {application?.title || "Become a Realtor with Ownage Group"}
               </h2>
               <p className="my-4 text-[16px] leading-7 sm:text-[18px] lg:text-[20px] lg:leading-8">

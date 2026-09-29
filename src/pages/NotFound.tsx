@@ -16,7 +16,7 @@ const NotFound = () => (
       </div>
 
       <p className="mt-10 text-sm font-semibold uppercase tracking-[0.2em] text-purple-20">Page not found</p>
-      <h1 className="mt-3 text-[36px] font-bold leading-tight sm:text-[50px]">This property address doesn’t exist.</h1>
+      <h1 className="lexend mt-3 text-[36px] font-bold leading-tight sm:text-[50px]">This property address doesn’t exist.</h1>
       <p className="mt-5 max-w-2xl text-[16px] leading-7 text-[#606060] sm:text-[19px] sm:leading-8">
         The page may have moved, or the link might be incorrect. Let’s get you back somewhere useful.
       </p>

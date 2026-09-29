@@ -87,7 +87,7 @@ const AboutUs = () => {
       </header>
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h1 className="text-[38px] font-bold leading-tight sm:text-[50px]">
+        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
           {page?.hero?.title || <>About <span className="text-purple-20">Us</span></>}
         </h1>
         <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
@@ -119,7 +119,7 @@ const AboutUs = () => {
 
           <div className="space-y-5 lg:w-[50%] lg:space-y-8">
             <div className="space-y-3">
-              <h2 className="lg:text-[18px] text-purple-20 font-semibold uppercase">
+              <h2 className="lexend lg:text-[18px] text-purple-20 font-semibold uppercase">
                 {intro?.eyebrow || "About Ownage group"}
               </h2>
               <p className="text-[16px] leading-8 sm:text-[20px] lg:text-[24px] lg:leading-10">
@@ -145,7 +145,7 @@ const AboutUs = () => {
               className="w-[84vw] max-w-[340px] shrink-0 snap-start space-y-4 rounded-xl bg-white p-5 shadow-md transition-[transform,box-shadow] duration-300 hover:-translate-y-2 hover:shadow-2xl sm:w-[320px] lg:w-auto lg:max-w-none"
             >
               <div aria-hidden="true">{item.icon}</div>
-              <h2 className="text-[20px] font-semibold uppercase lg:text-[24px]">
+              <h2 className="lexend text-[20px] font-semibold uppercase lg:text-[24px]">
                 {item.title}
               </h2>
               <p className="text-[14px] leading-6 text-[#383838]">
@@ -158,7 +158,7 @@ const AboutUs = () => {
         <section className="bg-[#FCCB0714] py-12 lg:py-20">
           <div className="mx-auto flex w-[90%] max-w-7xl flex-col items-center justify-between gap-9 lg:flex-row lg:gap-12">
             <div className="space-y-4 lg:w-[50%]">
-              <h2 className="lg:text-[18px] text-purple-20 font-semibold uppercase">
+              <h2 className="lexend lg:text-[18px] text-purple-20 font-semibold uppercase">
                 {story?.eyebrow || "Our Story"}
               </h2>
               <p className="text-[16px] leading-7 lg:text-[20px] lg:leading-8">
@@ -188,7 +188,7 @@ const AboutUs = () => {
         </section>
 
         <section className="mx-auto my-14 w-[90%] max-w-7xl lg:my-20">
-          <h2 className="text-[28px] font-semibold text-purple-20 sm:text-[32px] lg:text-[36px]">
+          <h2 className="lexend text-[28px] font-semibold text-purple-20 sm:text-[32px] lg:text-[36px]">
             {leadership?.title || "The leaders behind the vision"}
           </h2>
           <p className="my-3 text-[16px] leading-7 lg:text-[20px]">
@@ -205,7 +205,7 @@ const AboutUs = () => {
                   alt={person.name}
                   className="aspect-[4/5] w-full rounded-lg object-cover"
                 />
-                <h2 className="text-[20px] mt-4 mb-2 text-purple-20 font-semibold">
+                <h2 className="lexend text-[20px] mt-4 mb-2 text-purple-20 font-semibold">
                   {person.name}
                 </h2>
                 <p className="text-[14px]">{person.role}</p>

@@ -2,17 +2,26 @@ import { Link } from "react-router-dom";
 import TopNav from "./TopNav";
 import { HeroImgAttachmentOne, HeroImgAttachmentTwo } from "../icons";
 import { useCmsPage } from "../../context/SiteContentContext";
+import { motion, useReducedMotion } from "framer-motion";
 
 const Hero = () => {
   const hero = useCmsPage("home")?.hero;
   const heroImages = hero?.images || [];
+  const prefersReducedMotion = useReducedMotion();
+  const entrance = prefersReducedMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 24 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+      };
   return (
     <div className="theme-static-light bg-cover bg-center min-h-screen lg:pb-20 pb-10" style={{ backgroundImage: `url(${hero?.image?.url || "/hero.svg"})` }}>
       <div className="flex justify-center items-center pt-6">
         <TopNav />
       </div>
 
-      <div className="flex w-full max-w-[684px] flex-col items-center justify-center px-4 text-center mx-auto lg:mt-20 mt-10">
+      <motion.div {...entrance} className="flex w-full max-w-[684px] flex-col items-center justify-center px-4 text-center mx-auto lg:mt-20 mt-10">
         <h2 className="text-[38px] lg:px-auto px-4 lexend font-semibold leading-[1.12] sm:text-[38px] lg:text-[60px]">
           {hero?.title || <>Ready to <span className="text-purple-20 kaushan">Own Your</span>{" "}First Piece of <span className="text-orange-20 kaushan">Land?</span></>}
         </h2>
@@ -35,7 +44,12 @@ const Hero = () => {
           </Link>
         </div>
 
-        <div className="my-6 flex lg:gap-10 gap-4 flex-row mt-4">
+        <motion.div
+          className="my-6 flex lg:gap-10 gap-4 flex-row mt-4"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div className="relative">
             <img
               src={heroImages[0]?.url || "/hero-img-2.png"}
@@ -60,8 +74,8 @@ const Hero = () => {
             </div>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

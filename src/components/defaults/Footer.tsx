@@ -81,7 +81,7 @@ const Footer = () => {
                 className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out lg:block lg:opacity-100 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
               >
                 <div className="overflow-hidden">
-                  <h2 className="hidden font-semibold text-purple-20 lg:block">{group.title}</h2>
+                  <h2 className="lexend hidden font-semibold text-purple-20 lg:block">{group.title}</h2>
                   <ul className="space-y-3 pb-5 lg:mt-4 lg:space-y-4 lg:pb-0">
                     {group.items.map((item) => (
                       <li key={item.label}>

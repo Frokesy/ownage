@@ -73,7 +73,7 @@ const Careers = () => {
       </header>
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h1 className="text-[38px] font-bold leading-tight sm:text-[50px]">
+        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
           {page?.hero?.title || <>Build Your Future In <span className="text-purple-20">Real Estate</span></>}
         </h1>
         <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
@@ -93,7 +93,7 @@ const Careers = () => {
       />
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h1 className="text-[38px] font-bold leading-tight sm:text-[50px]">
+        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
           {skills?.title || "Your Real Estate Journey Starts Here"}
         </h1>
         <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
@@ -111,7 +111,7 @@ const Careers = () => {
             className="w-[84vw] max-w-[340px] shrink-0 snap-start space-y-4 rounded-xl bg-white p-5 shadow-md transition-[transform,box-shadow] duration-300 hover:-translate-y-2 hover:shadow-2xl sm:w-[320px] lg:w-auto lg:max-w-none"
           >
             <div aria-hidden="true">{item.icon}</div>
-            <h2 className="text-[18px] font-semibold lg:text-[22px]">
+            <h2 className="lexend text-[18px] font-semibold lg:text-[22px]">
               {item.title}
             </h2>
             <p className="text-[14px] leading-6 text-[#383838]">
@@ -128,7 +128,7 @@ const Careers = () => {
             {journeyGallery?.eyebrow || "The Real Estate Journey"}
           </p>
         </div>
-        <h1 className="text-[38px] font-bold leading-tight sm:text-[50px]">
+        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
           {journeyGallery?.title || "Learn. Connect. Grow"}
         </h1>
       </div>
@@ -150,7 +150,7 @@ const Careers = () => {
           />
         </div>
         <div className="w-full lg:w-[50%]">
-          <h2 className="text-[28px] font-semibold sm:text-[32px]">
+          <h2 className="lexend text-[28px] font-semibold sm:text-[32px]">
             {opportunity?.title || "Your Opportunity to Grow"}
           </h2>
           <p className="my-4 text-[16px] leading-7 sm:text-[18px] sm:leading-8">
@@ -177,7 +177,7 @@ const Careers = () => {
       </section>
       <section className="mx-auto my-14 flex w-[90%] max-w-7xl flex-col-reverse items-center justify-between gap-8 lg:my-24 lg:flex-row lg:gap-12">
         <div className="w-full lg:w-[50%]">
-          <h2 className="text-[28px] font-semibold sm:text-[32px]">
+          <h2 className="lexend text-[28px] font-semibold sm:text-[32px]">
             {start?.title || "Start Your Real Estate Journey"}
           </h2>
           <p className="my-4 text-[16px] leading-7 sm:text-[18px] sm:leading-8">

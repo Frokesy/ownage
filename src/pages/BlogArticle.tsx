@@ -36,7 +36,7 @@ const BlogArticle = () => {
         <div className="mx-auto w-[90%] max-w-5xl py-10 text-center sm:py-16 lg:py-20">
           <Link to="/blog" className="micro-nav-link text-sm font-semibold text-purple-20">← Back to all articles</Link>
           <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-purple-20">{post.category}</p>
-          <h1 className="mx-auto mt-4 max-w-4xl text-[36px] font-bold leading-tight sm:text-[50px] lg:text-[62px]">{post.title}</h1>
+          <h1 className="lexend mx-auto mt-4 max-w-4xl text-[36px] font-bold leading-tight sm:text-[50px] lg:text-[62px]">{post.title}</h1>
           <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-[#606060]">
             <span>By {post.author}</span><span aria-hidden="true">•</span><time dateTime={post.publishedAt}>{post.displayDate}</time>
           </div>
@@ -52,7 +52,7 @@ const BlogArticle = () => {
             </div>
           ) : post.content.map((section) => (
             <section key={section.heading} className="mt-10 sm:mt-14">
-              <h2 className="text-[28px] font-semibold leading-tight sm:text-[36px]">{section.heading}</h2>
+              <h2 className="lexend text-[28px] font-semibold leading-tight sm:text-[36px]">{section.heading}</h2>
               <div className="mt-5 space-y-5 text-[16px] leading-8 text-[#383838] sm:text-[18px]">
                 {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               </div>

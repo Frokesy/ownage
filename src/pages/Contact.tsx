@@ -37,7 +37,7 @@ const Contact = () => {
       </header>
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h1 className="text-[38px] font-bold leading-tight sm:text-[50px]">
+        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
           {page?.hero?.title || "Get in touch"}
         </h1>
         <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
@@ -48,7 +48,7 @@ const Contact = () => {
       <main className="mx-auto my-6 flex w-[90%] max-w-7xl flex-col gap-12 sm:my-16 lg:my-24 lg:flex-row lg:justify-between lg:gap-16">
         <div className="space-y-8 lg:w-[40%]">
           <div className="space-y-3">
-            <h2 className="text-[32px] font-semibold sm:text-[40px] lg:text-[50px]">
+            <h2 className="lexend text-[32px] font-semibold sm:text-[40px] lg:text-[50px]">
               {intro?.title || "Let's Talk"}
             </h2>
             <p className="text-[16px] leading-7 sm:text-[18px] lg:text-[20px] lg:leading-8">
@@ -56,7 +56,7 @@ const Contact = () => {
             </p>
           </div>
           <div className="space-y-3">
-            <h2 className="text-[22px] font-semibold lg:text-[28px]">Email</h2>
+            <h2 className="lexend text-[22px] font-semibold lg:text-[28px]">Email</h2>
             <a
               className="block break-all text-[16px] hover:text-purple-20 sm:text-[18px] lg:text-[20px]"
               href={`mailto:${settings?.contactEmail || "ownagegroup@gmail.com"}`}
@@ -65,7 +65,7 @@ const Contact = () => {
             </a>
           </div>
           <div className="space-y-3">
-            <h2 className="text-[22px] font-semibold lg:text-[28px]">
+            <h2 className="lexend text-[22px] font-semibold lg:text-[28px]">
               Socials
             </h2>
             <div className="flex flex-wrap gap-x-6 gap-y-3 text-[16px] sm:text-[18px] lg:flex-col lg:text-[20px]">

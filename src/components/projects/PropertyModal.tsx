@@ -84,7 +84,7 @@ const PropertyModal = ({ property, onClose }: PropertyModalProps) => {
         <div className="flex flex-col lg:min-h-[680px] lg:flex-row">
           <div className="bg-[#E6D7E9] px-6 py-10 sm:px-9 sm:py-12 lg:w-[38%] lg:px-10 lg:py-16">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-purple-20">{property.category}</p>
-            <h2 className="mt-3 text-[30px] font-semibold leading-tight lg:text-[36px]">{property.title}</h2>
+            <h2 className="lexend mt-3 text-[30px] font-semibold leading-tight lg:text-[36px]">{property.title}</h2>
             <p className="mt-5 border-l-2 border-orange-20 pl-4 leading-7">
               {property.desc}
             </p>
@@ -120,13 +120,13 @@ const PropertyModal = ({ property, onClose }: PropertyModalProps) => {
           <div className="flex flex-col bg-white px-6 py-10 sm:px-10 sm:py-12 lg:w-[62%] lg:px-14 lg:py-16">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-purple-20">Property overview</p>
-              <h3 className="mt-3 text-[26px] font-semibold sm:text-[32px]">A place designed for lasting value</h3>
+              <h3 className="lexend mt-3 text-[26px] font-semibold sm:text-[32px]">A place designed for lasting value</h3>
               <p className="mt-6 text-[16px] leading-8 text-[#484848] sm:text-[18px]">{property.overview}</p>
             </div>
 
             <div className="mt-10 border-t border-black/10 pt-8">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <h3 className="text-xl font-bold text-purple-20">Features</h3>
+                <h3 className="lexend text-xl font-bold text-purple-20">Features</h3>
                 <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-800">{property.status}</span>
               </div>
               <p className="mt-4 text-[15px] font-medium leading-7 text-[#484848] sm:text-[16px]">

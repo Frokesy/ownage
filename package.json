@@ -25,6 +25,7 @@
     "@sanity/client": "^8.7.0",
     "@vitejs/plugin-react": "latest",
     "express": "^5.2.1",
+    "framer-motion": "^13.4.4",
     "nodemailer": "^10.0.10",
     "react": "latest",
     "react-dom": "latest",

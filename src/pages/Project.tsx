@@ -88,7 +88,7 @@ const Project = () => {
       </header>
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h1 className="text-[38px] font-bold leading-tight sm:text-[50px]">
+        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
           {page?.hero?.title || <>Our <span className="text-purple-20">Projects</span></>}
         </h1>
         <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
@@ -124,7 +124,7 @@ const Project = () => {
                 <div className="h-0.5 w-10 bg-orange-20"></div>
                 <p className="text-[#1E1E2F] lg:text-[16px] text-[14px]">{property.category}</p>
               </div>
-              <h2 className="text-[#1E1E2F] lg:text-[36px] text-[20px] font-semibold">
+              <h2 className="lexend text-[#1E1E2F] lg:text-[36px] text-[20px] font-semibold">
                 {property.title}
               </h2>
               <p className="border-l-2 border-orange-20 pl-3 lg:text-[16px] text-[14px]">{property.desc}</p>

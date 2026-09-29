@@ -4,6 +4,7 @@ import BlogPageSkeleton from "./components/blog/BlogPageSkeleton";
 import PageLoader from "./components/defaults/PageLoader";
 import { useSiteContent } from "./context/SiteContentContext";
 import ThemeToggle from "./components/defaults/ThemeToggle";
+import { motion, useReducedMotion } from "framer-motion";
 
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -18,6 +19,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const App = () => {
   const location = useLocation();
   const { pages } = useSiteContent();
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -38,7 +40,12 @@ const App = () => {
   return (
   <>
   <Suspense fallback={fallback}>
-    <div key={location.pathname} className="page-enter">
+    <motion.div
+      key={location.pathname}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
     <Routes location={location}>
     <Route path="/" element={<Home />} />
     <Route path="/project" element={<Project />} />
@@ -51,7 +58,7 @@ const App = () => {
 
     <Route path="*" element={<NotFound />} />
     </Routes>
-    </div>
+    </motion.div>
   </Suspense>
   <ThemeToggle />
   </>

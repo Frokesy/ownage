@@ -28,7 +28,7 @@ const SiteBlog = () => {
       </header>
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h1 className="text-[38px] font-bold leading-tight sm:text-[50px]">
+        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
           {page?.hero?.title || "Blog Articles"}
         </h1>
         <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
@@ -110,7 +110,7 @@ const SiteBlog = () => {
                     </time>
                   </div>
                 </div>
-                <h2 className="mt-2 text-[19px] font-semibold leading-7 sm:text-[20px]">
+                <h2 className="lexend mt-2 text-[19px] font-semibold leading-7 sm:text-[20px]">
                   {item.title}
                 </h2>
                 <Link
