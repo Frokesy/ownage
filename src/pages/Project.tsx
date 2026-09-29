@@ -4,9 +4,13 @@ import Footer from "../components/defaults/Footer";
 import { LocationIcon } from "../components/icons";
 import PropertyModal, { type PropertyDetails } from "../components/projects/PropertyModal";
 import { findCmsSection, useCmsPage } from "../context/SiteContentContext";
+import ImageReveal from "../components/defaults/ImageReveal";
+import MotionIn from "../components/defaults/MotionIn";
+import { motion, useReducedMotion } from "framer-motion";
 
 const Project = () => {
   const [selectedProperty, setSelectedProperty] = useState<PropertyDetails | null>(null);
+  const prefersReducedMotion = useReducedMotion();
   const closeModal = useCallback(() => setSelectedProperty(null), []);
 
   const fallbackProperties: PropertyDetails[] = [
@@ -88,17 +92,21 @@ const Project = () => {
       </header>
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
-          {page?.hero?.title || <>Our <span className="text-purple-20">Projects</span></>}
-        </h1>
-        <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
-          {page?.hero?.subtitle || "See all of our properties"}
-        </p>
+        <MotionIn effect="zoom">
+          <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
+            {page?.hero?.title || <>Our <span className="text-purple-20">Projects</span></>}
+          </h1>
+        </MotionIn>
+        <MotionIn effect="up" delay={0.12}>
+          <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
+            {page?.hero?.subtitle || "See all of our properties"}
+          </p>
+        </MotionIn>
       </div>
 
       <div className="mx-auto flex w-[90%] max-w-7xl flex-col space-y-10 sm:space-y-14 lg:space-y-16">
         {properties.map((property, index) => (
-          <article
+          <motion.article
             key={property.id}
             role="button"
             tabIndex={0}
@@ -110,16 +118,22 @@ const Project = () => {
                 setSelectedProperty(property);
               }
             }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: index % 2 === 0 ? 34 : -26, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.16 }}
+            transition={{ duration: 0.7, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] as const }}
             className={`project-card group flex cursor-pointer items-center rounded-2xl p-2 transition-[background-color,box-shadow] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20 ${index % 2 === 0 ? 'lg:flex-row flex-col' : 'lg:flex-row-reverse flex-col' } justify-between lg:space-y-0 space-y-8 lg:gap-10`}
           >
             <div className="lg:w-[50%]">
-              <img
-                src={property.img}
-                alt={property.title}
-                className="w-full rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]"
-              />
+              <ImageReveal direction={index % 2 === 0 ? "left" : "right"}>
+                <img
+                  src={property.img}
+                  alt={property.title}
+                  className="w-full rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+                />
+              </ImageReveal>
             </div>
-            <div className="lg:space-y-4 space-y-3 lg:w-[50%]">
+            <MotionIn effect={index % 2 === 0 ? "right" : "left"} delay={0.12} className="lg:space-y-4 space-y-3 lg:w-[50%]">
               <div className="flex items-center space-x-3">
                 <div className="h-0.5 w-10 bg-orange-20"></div>
                 <p className="text-[#1E1E2F] lg:text-[16px] text-[14px]">{property.category}</p>
@@ -133,8 +147,8 @@ const Project = () => {
                 <span className="lg:text-[16px] text-[12px]">{property.location}</span>
               </div>
               <span className="mt-2 inline-flex font-semibold text-purple-20 underline underline-offset-4">View full details</span>
-            </div>
-          </article>
+            </MotionIn>
+          </motion.article>
         ))}
       </div>
 

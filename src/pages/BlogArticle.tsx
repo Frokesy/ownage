@@ -4,6 +4,8 @@ import type { PortableTextComponents } from "@portabletext/react";
 import Footer from "../components/defaults/Footer";
 import TopNav from "../components/defaults/TopNav";
 import BlogImage from "../components/blog/BlogImage";
+import ImageReveal from "../components/defaults/ImageReveal";
+import MotionIn from "../components/defaults/MotionIn";
 import { useBlogPosts } from "../context/BlogContext";
 
 const portableTextComponents: PortableTextComponents = {
@@ -11,12 +13,14 @@ const portableTextComponents: PortableTextComponents = {
     image: ({ value }) => {
       const image = value as { url?: string; alt?: string };
       return image.url ? (
-        <img
-          src={image.url}
-          alt={image.alt || ""}
-          className="my-10 w-full rounded-2xl object-cover"
-          loading="lazy"
-        />
+        <ImageReveal direction="right">
+          <img
+            src={image.url}
+            alt={image.alt || ""}
+            className="my-10 w-full rounded-2xl object-cover"
+            loading="lazy"
+          />
+        </ImageReveal>
       ) : null;
     },
   },
@@ -34,27 +38,31 @@ const BlogArticle = () => {
       <header className="flex justify-center px-4 py-6"><TopNav /></header>
       <main>
         <div className="mx-auto w-[90%] max-w-5xl py-10 text-center sm:py-16 lg:py-20">
-          <Link to="/blog" className="micro-nav-link text-sm font-semibold text-purple-20">← Back to all articles</Link>
-          <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-purple-20">{post.category}</p>
-          <h1 className="lexend mx-auto mt-4 max-w-4xl text-[36px] font-bold leading-tight sm:text-[50px] lg:text-[62px]">{post.title}</h1>
-          <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-[#606060]">
-            <span>By {post.author}</span><span aria-hidden="true">•</span><time dateTime={post.publishedAt}>{post.displayDate}</time>
-          </div>
+          <MotionIn effect="down"><Link to="/blog" className="micro-nav-link text-sm font-semibold text-purple-20">← Back to all articles</Link></MotionIn>
+          <MotionIn effect="up" delay={0.08}><p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-purple-20">{post.category}</p></MotionIn>
+          <MotionIn effect="zoom" delay={0.14}><h1 className="lexend mx-auto mt-4 max-w-4xl text-[36px] font-bold leading-tight sm:text-[50px] lg:text-[62px]">{post.title}</h1></MotionIn>
+          <MotionIn effect="down" delay={0.22}>
+            <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-[#606060]">
+              <span>By {post.author}</span><span aria-hidden="true">•</span><time dateTime={post.publishedAt}>{post.displayDate}</time>
+            </div>
+          </MotionIn>
         </div>
 
-        <BlogImage src={post.img} alt={post.imageAlt || ""} eager className="h-[300px] w-full object-cover sm:h-[480px] lg:h-[620px]" />
+        <ImageReveal direction="left">
+          <BlogImage src={post.img} alt={post.imageAlt || ""} eager className="h-[300px] w-full object-cover sm:h-[480px] lg:h-[620px]" />
+        </ImageReveal>
 
         <article className="mx-auto w-[90%] py-12 sm:py-16 lg:w-[60%] lg:max-w-4xl lg:py-24">
-          <p className="text-xl font-medium leading-8 text-[#282828] sm:text-2xl sm:leading-10">{post.excerpt}</p>
+          <MotionIn effect="up"><p className="text-xl font-medium leading-8 text-[#282828] sm:text-2xl sm:leading-10">{post.excerpt}</p></MotionIn>
           {post.body?.length ? (
             <div className="mt-10 space-y-6 text-[16px] leading-8 text-[#383838] sm:mt-14 sm:text-[18px] [&_h2]:pt-5 [&_h2]:text-[28px] [&_h2]:font-semibold [&_h2]:leading-tight sm:[&_h2]:text-[36px] [&_li]:ml-6 [&_li]:list-disc [&_li]:marker:text-purple-20">
               <PortableText value={post.body} components={portableTextComponents} />
             </div>
           ) : post.content.map((section) => (
             <section key={section.heading} className="mt-10 sm:mt-14">
-              <h2 className="lexend text-[28px] font-semibold leading-tight sm:text-[36px]">{section.heading}</h2>
+              <MotionIn effect="zoom"><h2 className="lexend text-[28px] font-semibold leading-tight sm:text-[36px]">{section.heading}</h2></MotionIn>
               <div className="mt-5 space-y-5 text-[16px] leading-8 text-[#383838] sm:text-[18px]">
-                {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                {section.paragraphs.map((paragraph, index) => <MotionIn key={paragraph} effect={index % 2 === 0 ? "up" : "down"} delay={index * 0.08}><p>{paragraph}</p></MotionIn>)}
               </div>
               {section.points && <ul className="mt-6 space-y-3 pl-6 text-[16px] leading-7 sm:text-[18px]">{section.points.map((point) => <li key={point} className="list-disc marker:text-purple-20">{point}</li>)}</ul>}
             </section>

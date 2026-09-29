@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { findCmsSection, useCmsPage } from "../../context/SiteContentContext";
+import ImageReveal from "../defaults/ImageReveal";
 
 const fallbackTestimonials = [
   {
@@ -68,14 +69,16 @@ const Testimonials = () => {
 
         <div className="mt-8 flex w-full flex-col items-center justify-between gap-8 lg:mt-12 lg:flex-row lg:gap-10">
           <div className="relative flex w-full flex-col items-center lg:w-[70%] lg:flex-row">
-            <div className="testimonial-frame carousel-focus-enter relative z-10 aspect-square w-[220px] shrink-0 sm:w-[270px] lg:w-[300px]">
-              <img
-                key={`portrait-${activeIndex}`}
-                src={activeTestimonial.image}
-                alt={`${activeTestimonial.name}, ${activeTestimonial.role}`}
-                className="testimonial h-full w-full object-cover object-top"
-              />
-            </div>
+            <ImageReveal direction="left" className="relative z-10 aspect-square w-[220px] shrink-0 sm:w-[270px] lg:w-[300px]">
+              <div className="testimonial-frame relative h-full w-full">
+                <img
+                  key={`portrait-${activeIndex}`}
+                  src={activeTestimonial.image}
+                  alt={`${activeTestimonial.name}, ${activeTestimonial.role}`}
+                  className="testimonial h-full w-full object-cover object-top"
+                />
+              </div>
+            </ImageReveal>
             <div
               key={activeIndex}
               className="carousel-focus-enter -mt-3 w-[92%] space-y-3 rounded-2xl bg-white p-6 shadow-xl sm:-mt-5 sm:p-8 lg:absolute lg:right-0 lg:mt-0 lg:w-[55%]"

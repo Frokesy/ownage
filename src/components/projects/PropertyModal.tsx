@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { DownloadIcon, LocationIcon } from "../icons";
+import ImageReveal from "../defaults/ImageReveal";
+import MotionIn from "../defaults/MotionIn";
 
 export type PropertyDetails = {
   id: number | string;
@@ -83,24 +85,26 @@ const PropertyModal = ({ property, onClose }: PropertyModalProps) => {
 
         <div className="flex flex-col lg:min-h-[680px] lg:flex-row">
           <div className="bg-[#E6D7E9] px-6 py-10 sm:px-9 sm:py-12 lg:w-[38%] lg:px-10 lg:py-16">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-purple-20">{property.category}</p>
-            <h2 className="lexend mt-3 text-[30px] font-semibold leading-tight lg:text-[36px]">{property.title}</h2>
-            <p className="mt-5 border-l-2 border-orange-20 pl-4 leading-7">
+            <MotionIn effect="down"><p className="text-sm font-semibold uppercase tracking-[0.16em] text-purple-20">{property.category}</p></MotionIn>
+            <MotionIn effect="zoom" delay={0.08}><h2 className="lexend mt-3 text-[30px] font-semibold leading-tight lg:text-[36px]">{property.title}</h2></MotionIn>
+            <MotionIn effect="up" delay={0.16}><p className="mt-5 border-l-2 border-orange-20 pl-4 leading-7">
               {property.desc}
-            </p>
+            </p></MotionIn>
             <div className="flex items-center gap-3 py-5">
               <LocationIcon />
               <p>{property.location}</p>
             </div>
-            <img
-              src={property.img}
-              alt={property.title}
-              className="h-[220px] w-full rounded-2xl object-cover"
-            />
-            <div className="mt-6 space-y-2 rounded-2xl bg-purple-20 p-5 text-white shadow-lg">
+            <ImageReveal direction="left">
+              <img
+                src={property.img}
+                alt={property.title}
+                className="h-[220px] w-full rounded-2xl object-cover"
+              />
+            </ImageReveal>
+            <MotionIn effect="up" delay={0.1} className="mt-6 space-y-2 rounded-2xl bg-purple-20 p-5 text-white shadow-lg">
               <p className="text-xs font-semibold uppercase tracking-wider">Starting from</p>
               <p className="text-2xl font-semibold">{purchaseOptions[selectedOption].price}</p>
-            </div>
+            </MotionIn>
 
             <fieldset className="mt-7 space-y-3">
               <legend className="mb-3 font-semibold">Available purchase options</legend>
@@ -119,9 +123,9 @@ const PropertyModal = ({ property, onClose }: PropertyModalProps) => {
 
           <div className="flex flex-col bg-white px-6 py-10 sm:px-10 sm:py-12 lg:w-[62%] lg:px-14 lg:py-16">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-purple-20">Property overview</p>
-              <h3 className="lexend mt-3 text-[26px] font-semibold sm:text-[32px]">A place designed for lasting value</h3>
-              <p className="mt-6 text-[16px] leading-8 text-[#484848] sm:text-[18px]">{property.overview}</p>
+              <MotionIn effect="down"><p className="text-sm font-semibold uppercase tracking-[0.16em] text-purple-20">Property overview</p></MotionIn>
+              <MotionIn effect="zoom" delay={0.08}><h3 className="lexend mt-3 text-[26px] font-semibold sm:text-[32px]">A place designed for lasting value</h3></MotionIn>
+              <MotionIn effect="up" delay={0.16}><p className="mt-6 text-[16px] leading-8 text-[#484848] sm:text-[18px]">{property.overview}</p></MotionIn>
             </div>
 
             <div className="mt-10 border-t border-black/10 pt-8">

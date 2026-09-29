@@ -7,11 +7,15 @@ import { blogCategories } from "../data/blog";
 import BlogImage from "../components/blog/BlogImage";
 import { useBlogPosts } from "../context/BlogContext";
 import { useCmsPage } from "../context/SiteContentContext";
+import ImageReveal from "../components/defaults/ImageReveal";
+import MotionIn from "../components/defaults/MotionIn";
+import { motion, useReducedMotion } from "framer-motion";
 
 const SiteBlog = () => {
   const [activeCategory, setActiveCategory] = useState<string>(blogCategories[0]);
   const { posts: blogPosts, isLoading } = useBlogPosts();
   const page = useCmsPage("blog");
+  const prefersReducedMotion = useReducedMotion();
   const visibleItems =
     activeCategory === blogCategories[0]
       ? blogPosts
@@ -28,16 +32,20 @@ const SiteBlog = () => {
       </header>
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
-          {page?.hero?.title || "Blog Articles"}
-        </h1>
-        <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
-          {page?.hero?.subtitle || "Perspectives and practical insights on real estate"}
-        </p>
+        <MotionIn effect="zoom">
+          <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
+            {page?.hero?.title || "Blog Articles"}
+          </h1>
+        </MotionIn>
+        <MotionIn effect="up" delay={0.12}>
+          <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
+            {page?.hero?.subtitle || "Perspectives and practical insights on real estate"}
+          </p>
+        </MotionIn>
       </div>
 
       <main className="mx-auto my-6 flex w-[90%] max-w-7xl flex-col gap-8 sm:my-12 lg:my-10 lg:gap-12">
-        <div className="md:hidden">
+        <MotionIn effect="left" className="md:hidden">
           <label
             htmlFor="blog-category"
             className="mb-2 block text-sm font-semibold text-purple-20"
@@ -54,8 +62,9 @@ const SiteBlog = () => {
               <option key={category}>{category}</option>
             ))}
           </select>
-        </div>
+        </MotionIn>
 
+        <MotionIn effect="down" delay={0.1}>
         <div
           className="mx-auto hidden w-[70%] items-end justify-center md:flex"
           role="tablist"
@@ -77,6 +86,7 @@ const SiteBlog = () => {
             );
           })}
         </div>
+        </MotionIn>
 
         <p className="text-sm text-[#606060]" aria-live="polite">
           {isLoading ? "Refreshing articles…" : `Showing ${visibleItems.length}`}{" "}
@@ -84,17 +94,24 @@ const SiteBlog = () => {
         </p>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-          {visibleItems.map((item) => {
+          {visibleItems.map((item, index) => {
             return (
-              <article
+              <motion.article
                 key={item.id}
-                className="group flex flex-col overflow-hidden rounded-xl border border-[#ccc] bg-white p-3 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: index % 2 === 0 ? 30 : -24, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                whileHover={prefersReducedMotion ? undefined : { y: -6, scale: 1.01 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.65, delay: (index % 6) * 0.08, ease: [0.22, 1, 0.36, 1] as const }}
+                className="group flex flex-col overflow-hidden rounded-xl border border-[#ccc] bg-white p-3 transition-[box-shadow] duration-300 hover:shadow-xl motion-reduce:transition-none"
               >
-                <BlogImage
-                  src={item.img}
-                  alt={item.imageAlt || ""}
-                  className="h-[210px] w-full rounded-lg object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:h-[232px]"
-                />
+                <ImageReveal direction={index % 2 === 0 ? "left" : "right"}>
+                  <BlogImage
+                    src={item.img}
+                    alt={item.imageAlt || ""}
+                    className="h-[210px] w-full rounded-lg object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:h-[232px]"
+                  />
+                </ImageReveal>
                 <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
                   <div className="flex items-center gap-2">
                     <SmallAvatarIcon />
@@ -110,16 +127,20 @@ const SiteBlog = () => {
                     </time>
                   </div>
                 </div>
-                <h2 className="lexend mt-2 text-[19px] font-semibold leading-7 sm:text-[20px]">
-                  {item.title}
-                </h2>
-                <Link
-                  to={`/blog/${item.slug}`}
-                  className="micro-nav-link mt-auto self-start pt-6 font-semibold text-purple-20 transition-colors hover:text-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20"
-                >
-                  <span>Read Article</span>
-                </Link>
-              </article>
+                <MotionIn effect="zoom">
+                  <h2 className="lexend mt-2 text-[19px] font-semibold leading-7 sm:text-[20px]">
+                    {item.title}
+                  </h2>
+                </MotionIn>
+                <MotionIn effect="up" delay={0.12} className="mt-auto self-start pt-6">
+                  <Link
+                    to={`/blog/${item.slug}`}
+                    className="micro-nav-link font-semibold text-purple-20 transition-colors hover:text-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-20"
+                  >
+                    <span>Read Article</span>
+                  </Link>
+                </MotionIn>
+              </motion.article>
             );
           })}
         </div>

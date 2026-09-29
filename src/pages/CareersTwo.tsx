@@ -10,10 +10,14 @@ import {
 import Footer from "../components/defaults/Footer";
 import { findCmsSection, useCmsPage } from "../context/SiteContentContext";
 import { sendEmailForm } from "../lib/email";
+import ImageReveal from "../components/defaults/ImageReveal";
+import MotionIn from "../components/defaults/MotionIn";
+import { motion, useReducedMotion } from "framer-motion";
 
 const CareersTwo = () => {
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
+  const prefersReducedMotion = useReducedMotion();
   const page = useCmsPage("careersTwo");
   const howItWorks = findCmsSection(page, "howItWorks");
   const application = findCmsSection(page, "application");
@@ -74,39 +78,50 @@ const CareersTwo = () => {
       </header>
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
-          {page?.hero?.title || <>Start your <span className="text-purple-20">Real Estate</span> Journey</>}
-        </h1>
-        <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
-          {page?.hero?.subtitle || "Join a growing community of real estate professionals. Learn how property sales work, develop your skills, and start building meaningful opportunities with Ownage Group."}
-        </p>
-        <a
-          href="#opportunity"
-          className="micro-button rounded-xl bg-purple-20 px-8 py-3 text-[16px] font-semibold text-white hover:bg-purple-20/90 sm:px-10 sm:text-[18px]"
-        >
-          {page?.hero?.primaryLabel || "Join the team"}
-        </a>
+        <MotionIn effect="zoom">
+          <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
+            {page?.hero?.title || <>Start your <span className="text-purple-20">Real Estate</span> Journey</>}
+          </h1>
+        </MotionIn>
+        <MotionIn effect="up" delay={0.12}>
+          <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
+            {page?.hero?.subtitle || "Join a growing community of real estate professionals. Learn how property sales work, develop your skills, and start building meaningful opportunities with Ownage Group."}
+          </p>
+        </MotionIn>
+        <MotionIn effect="down" delay={0.2}>
+          <a
+            href="#opportunity"
+            className="micro-button inline-block rounded-xl bg-purple-20 px-8 py-3 text-[16px] font-semibold text-white hover:bg-purple-20/90 sm:px-10 sm:text-[18px]"
+          >
+            {page?.hero?.primaryLabel || "Join the team"}
+          </a>
+        </MotionIn>
       </div>
 
       <main>
         <section className="mx-auto mt-10 flex w-[90%] max-w-7xl flex-col justify-between gap-10 lg:mt-20 lg:flex-row lg:gap-12">
           <div className="lg:w-[40%]">
-            <p className="uppercase text-purple-20 font-semibold">
+            <MotionIn effect="down"><p className="uppercase text-purple-20 font-semibold">
               {howItWorks?.eyebrow || "Your Journey Starts here"}
-            </p>
-            <h2 className="lexend lg:text-[36px] text-[30px] font-semibold">
+            </p></MotionIn>
+            <MotionIn effect="zoom" delay={0.08}><h2 className="lexend lg:text-[36px] text-[30px] font-semibold">
               {howItWorks?.title || "How it Works"}
-            </h2>
-            <p className="mt-3 text-[16px] leading-7 sm:text-[18px] lg:text-[22px] lg:leading-9">
+            </h2></MotionIn>
+            <MotionIn effect="up" delay={0.16}><p className="mt-3 text-[16px] leading-7 sm:text-[18px] lg:text-[22px] lg:leading-9">
               {howItWorks?.subtitle || "Getting started with Ownage Group is simple. Take the first step, learn the business, and begin building your real estate journey."}
-            </p>
+            </p></MotionIn>
           </div>
 
           <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 sm:gap-10 lg:w-[55%]">
-            {steps.map((step) => (
-              <article
+            {steps.map((step, index) => (
+              <motion.article
                 className="space-y-4 rounded-xl bg-white p-5 shadow-sm transition-shadow hover:shadow-lg"
                 key={step.id}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: index % 2 === 0 ? 28 : -24, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                whileHover={prefersReducedMotion ? undefined : { y: -5 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] as const }}
               >
                 <div aria-hidden="true">{step.icon}</div>
                 <h2 className="lexend lg:text-[18px] text-[16px] uppercase font-semibold">
@@ -115,7 +130,7 @@ const CareersTwo = () => {
                 <p className="text-[14px] leading-6 lg:text-[16px]">
                   {step.description}
                 </p>
-              </article>
+              </motion.article>
             ))}
           </div>
         </section>
@@ -126,22 +141,24 @@ const CareersTwo = () => {
         >
           <div className="mx-auto flex w-[90%] max-w-7xl flex-col items-start gap-10 lg:flex-row lg:items-center lg:gap-14">
             <div className="w-full lg:w-[50%]">
-              <p className="uppercase text-purple-20 font-semibold">
+              <MotionIn effect="down"><p className="uppercase text-purple-20 font-semibold">
                 {application?.eyebrow || "Apply Now"}
-              </p>
-              <h2 className="lexend lg:text-[36px] text-[30px] font-semibold">
+              </p></MotionIn>
+              <MotionIn effect="zoom" delay={0.08}><h2 className="lexend lg:text-[36px] text-[30px] font-semibold">
                 {application?.title || "Become a Realtor with Ownage Group"}
-              </h2>
-              <p className="my-4 text-[16px] leading-7 sm:text-[18px] lg:text-[20px] lg:leading-8">
+              </h2></MotionIn>
+              <MotionIn effect="up" delay={0.16}><p className="my-4 text-[16px] leading-7 sm:text-[18px] lg:text-[20px] lg:leading-8">
                 {application?.subtitle || "Take the first step toward your real estate journey with Ownage Group. Complete the form below and our team will be in touch with you."}
-              </p>
-              <img
-                src={application?.image?.url || "/careers/img-six.png"}
-                alt={application?.image?.alt || "Ownage realtor application"}
-                className="micro-image w-full rounded-2xl object-cover"
-              />
+              </p></MotionIn>
+              <ImageReveal direction="left" delay={0.12}>
+                <img
+                  src={application?.image?.url || "/careers/img-six.png"}
+                  alt={application?.image?.alt || "Ownage realtor application"}
+                  className="micro-image w-full rounded-2xl object-cover"
+                />
+              </ImageReveal>
             </div>
-            <form onSubmit={handleSubmit} className="w-full space-y-5 lg:w-[50%]">
+            <motion.form onSubmit={handleSubmit} className="w-full space-y-5 lg:w-[50%]" initial={prefersReducedMotion ? false : { opacity: 0, x: 45 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] as const }}>
               <div className="absolute -left-[9999px]" aria-hidden="true">
                 <label htmlFor="realtor-website">Website</label>
                 <input id="realtor-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
@@ -249,7 +266,7 @@ const CareersTwo = () => {
                   {formMessage}
                 </p>
               )}
-            </form>
+            </motion.form>
           </div>
         </section>
       </main>

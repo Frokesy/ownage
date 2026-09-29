@@ -7,8 +7,12 @@ import {
   VisionIcon,
 } from "../components/icons";
 import { findCmsSection, useCmsPage } from "../context/SiteContentContext";
+import ImageReveal from "../components/defaults/ImageReveal";
+import MotionIn from "../components/defaults/MotionIn";
+import { motion, useReducedMotion } from "framer-motion";
 
 const AboutUs = () => {
+  const prefersReducedMotion = useReducedMotion();
   const page = useCmsPage("about");
   const intro = findCmsSection(page, "intro");
   const principles = findCmsSection(page, "principles");
@@ -87,17 +91,21 @@ const AboutUs = () => {
       </header>
 
       <div className="flex flex-col items-center justify-center space-y-3 px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
-          {page?.hero?.title || <>About <span className="text-purple-20">Us</span></>}
-        </h1>
-        <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
-          {page?.hero?.subtitle || "We're building more than properties—we are building legacies."}
-        </p>
+        <MotionIn effect="zoom">
+          <h1 className="lexend text-[38px] font-bold leading-tight sm:text-[50px]">
+            {page?.hero?.title || <>About <span className="text-purple-20">Us</span></>}
+          </h1>
+        </MotionIn>
+        <MotionIn effect="up" delay={0.12}>
+          <p className="max-w-xl text-[16px] leading-7 text-[#0E2824] sm:text-[18px] lg:text-[22px]">
+            {page?.hero?.subtitle || "We're building more than properties—we are building legacies."}
+          </p>
+        </MotionIn>
       </div>
 
       <main>
         <section className="mx-auto mt-8 flex w-[90%] max-w-7xl flex-col items-center justify-between gap-10 sm:mt-12 lg:mt-20 lg:flex-row lg:gap-12">
-          <div className="w-full space-y-3 sm:space-y-4 lg:w-[50%]">
+          <ImageReveal direction="left" className="w-full space-y-3 sm:space-y-4 lg:w-[50%]">
             <img
               src={introImages[0]?.url || "/about/img-one.png"}
               alt={introImages[0]?.alt || "Ownage Group development"}
@@ -115,23 +123,29 @@ const AboutUs = () => {
                 className="micro-image h-[150px] min-w-0 flex-1 rounded-xl object-cover sm:h-auto"
               />
             </div>
-          </div>
+          </ImageReveal>
 
           <div className="space-y-5 lg:w-[50%] lg:space-y-8">
-            <div className="space-y-3">
+            <MotionIn effect="down">
               <h2 className="lexend lg:text-[18px] text-purple-20 font-semibold uppercase">
                 {intro?.eyebrow || "About Ownage group"}
               </h2>
+            </MotionIn>
+            <MotionIn effect="up" delay={0.08}>
               <p className="text-[16px] leading-8 sm:text-[20px] lg:text-[24px] lg:leading-10">
                 {intro?.body?.[0] || "Ownage Group is a real estate development company committed to creating exceptional spaces that inspire, connect and grow in value overtime."}
               </p>
-            </div>
-            <p className="text-[16px] leading-7 sm:text-[18px] lg:text-[24px] lg:leading-10">
-              {intro?.body?.[1] || "From strategic locations to quality construction, we build more than properties, we build lifestyles and secure futures."}
-            </p>
-            <p className="text-[16px] leading-7 sm:text-[18px] lg:text-[24px] lg:leading-10">
-              {intro?.body?.[2] || "From our humble beginnings to the growing communities we've built today, our journey is driven by a simple belief: everyone deserves a place they are proud to call their own."}
-            </p>
+            </MotionIn>
+            <MotionIn effect="down" delay={0.16}>
+              <p className="text-[16px] leading-7 sm:text-[18px] lg:text-[24px] lg:leading-10">
+                {intro?.body?.[1] || "From strategic locations to quality construction, we build more than properties, we build lifestyles and secure futures."}
+              </p>
+            </MotionIn>
+            <MotionIn effect="up" delay={0.24}>
+              <p className="text-[16px] leading-7 sm:text-[18px] lg:text-[24px] lg:leading-10">
+                {intro?.body?.[2] || "From our humble beginnings to the growing communities we've built today, our journey is driven by a simple belief: everyone deserves a place they are proud to call their own."}
+              </p>
+            </MotionIn>
           </div>
         </section>
 
@@ -139,10 +153,15 @@ const AboutUs = () => {
           aria-label="Our mission, vision, expertise and values"
           className="scrollbar-hide mx-auto my-14 flex w-[90%] max-w-7xl snap-x snap-mandatory items-stretch gap-5 overflow-x-auto pb-5 sm:my-16 lg:my-20 lg:grid lg:grid-cols-4 lg:gap-6 lg:overflow-visible lg:pb-0"
         >
-          {items.map((item) => (
-            <article
+          {items.map((item, index) => (
+            <motion.article
               key={item.id}
-              className="w-[84vw] max-w-[340px] shrink-0 snap-start space-y-4 rounded-xl bg-white p-5 shadow-md transition-[transform,box-shadow] duration-300 hover:-translate-y-2 hover:shadow-2xl sm:w-[320px] lg:w-auto lg:max-w-none"
+              initial={prefersReducedMotion ? false : { opacity: 0, y: index % 2 === 0 ? 30 : -24, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={prefersReducedMotion ? undefined : { y: -6, scale: 1.015 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] as const }}
+              className="w-[84vw] max-w-[340px] shrink-0 snap-start space-y-4 rounded-xl bg-white p-5 shadow-md transition-shadow duration-300 hover:shadow-2xl sm:w-[320px] lg:w-auto lg:max-w-none"
             >
               <div aria-hidden="true">{item.icon}</div>
               <h2 className="lexend text-[20px] font-semibold uppercase lg:text-[24px]">
@@ -151,28 +170,36 @@ const AboutUs = () => {
               <p className="text-[14px] leading-6 text-[#383838]">
                 {item.subtext}
               </p>
-            </article>
+            </motion.article>
           ))}
         </section>
 
         <section className="bg-[#FCCB0714] py-12 lg:py-20">
           <div className="mx-auto flex w-[90%] max-w-7xl flex-col items-center justify-between gap-9 lg:flex-row lg:gap-12">
             <div className="space-y-4 lg:w-[50%]">
-              <h2 className="lexend lg:text-[18px] text-purple-20 font-semibold uppercase">
-                {story?.eyebrow || "Our Story"}
-              </h2>
-              <p className="text-[16px] leading-7 lg:text-[20px] lg:leading-8">
-                {story?.body?.[0] || "From a vision to impactful developments, Ownage Group was founded with a clear vision: to redefine real estate development by focusing on quality, integrity, and long-term value."}
-              </p>
-              <p className="text-[16px] leading-7 lg:text-[20px] lg:leading-8">
-                {story?.body?.[1] || "What started as a small team with big dreams has grown into a strong brand known for delivering quality properties in prime locations."}
-              </p>
-              <p className="text-[16px] leading-7 lg:text-[20px] lg:leading-8">
-                {story?.body?.[2] || "Today, we continue to push boundaries, raise standards, and create communities where people can truly thrive."}
-              </p>
+              <MotionIn effect="zoom">
+                <h2 className="lexend lg:text-[18px] text-purple-20 font-semibold uppercase">
+                  {story?.eyebrow || "Our Story"}
+                </h2>
+              </MotionIn>
+              <MotionIn effect="up" delay={0.08}>
+                <p className="text-[16px] leading-7 lg:text-[20px] lg:leading-8">
+                  {story?.body?.[0] || "From a vision to impactful developments, Ownage Group was founded with a clear vision: to redefine real estate development by focusing on quality, integrity, and long-term value."}
+                </p>
+              </MotionIn>
+              <MotionIn effect="down" delay={0.16}>
+                <p className="text-[16px] leading-7 lg:text-[20px] lg:leading-8">
+                  {story?.body?.[1] || "What started as a small team with big dreams has grown into a strong brand known for delivering quality properties in prime locations."}
+                </p>
+              </MotionIn>
+              <MotionIn effect="up" delay={0.24}>
+                <p className="text-[16px] leading-7 lg:text-[20px] lg:leading-8">
+                  {story?.body?.[2] || "Today, we continue to push boundaries, raise standards, and create communities where people can truly thrive."}
+                </p>
+              </MotionIn>
             </div>
 
-            <div className="flex w-full gap-3 sm:gap-4 lg:w-[50%]">
+            <ImageReveal direction="right" className="flex w-full gap-3 sm:gap-4 lg:w-[50%]">
               <img
                 src={storyImages[0]?.url || "/about/img-four.png"}
                 alt={storyImages[0]?.alt || "A completed Ownage property"}
@@ -183,22 +210,31 @@ const AboutUs = () => {
                 alt={storyImages[1]?.alt || "An Ownage development site"}
                 className="micro-image h-[260px] min-w-0 flex-1 rounded-xl object-cover sm:h-auto"
               />
-            </div>
+            </ImageReveal>
           </div>
         </section>
 
         <section className="mx-auto my-14 w-[90%] max-w-7xl lg:my-20">
-          <h2 className="lexend text-[28px] font-semibold text-purple-20 sm:text-[32px] lg:text-[36px]">
-            {leadership?.title || "The leaders behind the vision"}
-          </h2>
-          <p className="my-3 text-[16px] leading-7 lg:text-[20px]">
-            {leadership?.subtitle || "Our leadership team brings experience, passion, and purpose."}
-          </p>
+          <MotionIn effect="zoom">
+            <h2 className="lexend text-[28px] font-semibold text-purple-20 sm:text-[32px] lg:text-[36px]">
+              {leadership?.title || "The leaders behind the vision"}
+            </h2>
+          </MotionIn>
+          <MotionIn effect="up" delay={0.1}>
+            <p className="my-3 text-[16px] leading-7 lg:text-[20px]">
+              {leadership?.subtitle || "Our leadership team brings experience, passion, and purpose."}
+            </p>
+          </MotionIn>
           <div className="scrollbar-hide mt-7 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-6 lg:grid lg:grid-cols-4 lg:gap-7 lg:overflow-visible lg:pb-0">
-            {people.map((person) => (
-              <article
+            {people.map((person, index) => (
+              <motion.article
                 key={person.id}
-                className="w-[78vw] max-w-[300px] shrink-0 snap-start rounded-xl bg-white p-3 shadow-lg transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-2xl sm:w-[280px] lg:w-auto lg:max-w-none"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: index % 2 === 0 ? 30 : -20, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                whileHover={prefersReducedMotion ? undefined : { y: -5, scale: 1.01 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.65, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] as const }}
+                className="w-[78vw] max-w-[300px] shrink-0 snap-start rounded-xl bg-white p-3 shadow-lg transition-shadow duration-300 hover:shadow-2xl sm:w-[280px] lg:w-auto lg:max-w-none"
               >
                 <img
                   src={person.avatar}
@@ -209,7 +245,7 @@ const AboutUs = () => {
                   {person.name}
                 </h2>
                 <p className="text-[14px]">{person.role}</p>
-              </article>
+              </motion.article>
             ))}
           </div>
         </section>

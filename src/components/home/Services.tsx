@@ -2,6 +2,9 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { LeftArrow, LocationIcon, RightArrow } from "../icons";
 import { findCmsSection, useCmsPage } from "../../context/SiteContentContext";
+import ImageReveal from "../defaults/ImageReveal";
+import MotionIn from "../defaults/MotionIn";
+import { motion, useReducedMotion } from "framer-motion";
 
 const fallbackServices: Array<{
   name: string;
@@ -58,6 +61,7 @@ const fallbackServices: Array<{
 const Services = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const section = findCmsSection(useCmsPage("home"), "services");
+  const prefersReducedMotion = useReducedMotion();
   const listingHref = section?.buttonHref || "/project";
   const services = section?.items?.length
     ? section.items.map((item) => ({
@@ -89,16 +93,20 @@ const Services = () => {
     >
       <div className="mx-auto flex w-[90%] max-w-7xl flex-col gap-7 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-3xl">
-          <h2 className="text-[30px] font-semibold lexend leading-tight from-purple-20 to-black bg-clip-text text-transparent bg-gradient-to-b sm:text-[30px] lg:text-[56px]">
-            {section?.title || "Find Your Next Place"}
-          </h2>
-          <p className="mt-3 text-base leading-7 sm:text-lg lg:text-[24px] lg:leading-9">
-            {section?.subtitle ||
-              "Good property is more than four walls and a location. We look for the right place, the right purpose, and the right potential."}
-          </p>
+          <MotionIn effect="zoom">
+            <h2 className="text-[30px] font-semibold lexend leading-tight from-purple-20 to-black bg-clip-text text-transparent bg-gradient-to-b sm:text-[30px] lg:text-[56px]">
+              {section?.title || "Find Your Next Place"}
+            </h2>
+          </MotionIn>
+          <MotionIn effect="up" delay={0.12}>
+            <p className="mt-3 text-base leading-7 sm:text-lg lg:text-[24px] lg:leading-9">
+              {section?.subtitle ||
+                "Good property is more than four walls and a location. We look for the right place, the right purpose, and the right potential."}
+            </p>
+          </MotionIn>
         </div>
 
-        <div className="flex shrink-0 items-center gap-3 self-end sm:self-auto">
+        <MotionIn effect="down" delay={0.18} className="flex shrink-0 items-center gap-3 self-end sm:self-auto">
           <button
             type="button"
             aria-label="Show previous properties"
@@ -115,7 +123,7 @@ const Services = () => {
           >
             <RightArrow />
           </button>
-        </div>
+        </MotionIn>
       </div>
 
       <div
@@ -123,17 +131,24 @@ const Services = () => {
         aria-label="Available properties"
         className="scrollbar-hide mx-auto mt-8 flex w-[90%] max-w-7xl snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-4 sm:mt-10 sm:gap-7"
       >
-        {services.map((service) => (
-          <article
+        {services.map((service, index) => (
+          <motion.article
             key={service.name}
-            className="group w-[82vw] max-w-[340px] bg-white p-4 rounded-xl shadow-lg shrink-0 snap-start transition-transform duration-300 hover:-translate-y-1 sm:w-[320px]"
+            initial={prefersReducedMotion ? false : { opacity: 0, y: index % 2 === 0 ? 38 : -30, scale: 0.94 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            whileHover={prefersReducedMotion ? undefined : { y: -7, scale: 1.015 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] as const }}
+            className="group w-[82vw] max-w-[340px] bg-white p-4 rounded-xl shadow-lg shrink-0 snap-start sm:w-[320px]"
           >
-            <img
-              src={service.image}
-              alt={service.alt || `${service.name} property`}
-              className="h-[220px] w-full rounded-2xl object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:h-[226px]"
-              loading="lazy"
-            />
+            <ImageReveal direction={index % 2 === 0 ? "left" : "right"}>
+              <img
+                src={service.image}
+                alt={service.alt || `${service.name} property`}
+                className="h-[220px] w-full rounded-2xl object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:h-[226px]"
+                loading="lazy"
+              />
+            </ImageReveal>
             <h3 className="mt-4 text-[18px] font-semibold lexend uppercase">
               {service.name}
             </h3>
@@ -157,7 +172,7 @@ const Services = () => {
                 Learn More
               </a>
             )}
-          </article>
+          </motion.article>
         ))}
       </div>
     </section>
