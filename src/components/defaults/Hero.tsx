@@ -46,7 +46,7 @@ const Hero = () => {
             <img
               src={heroImages[0]?.url || "/hero-img-2.png"}
               alt={heroImages[0]?.alt || "A completed residential development"}
-              className="micro-image lg:w-[324px] lg:h-[358px] w-[174px] h-[280px]"
+              className="micro-image lg:w-[324px] lg:h-[358px] h-[280px]"
             />
             <div className="absolute lg:-left-[180px] lg:right-auto -right-[100px] shadow-lg lg:rotate-[10deg] rotate-[-10deg] lg:top-[80px] top-[30px] z-10">
               <div className="bg-white lg:p-3 p-2 rounded-full lg:text-[14px] text-[10px] font-semibold">
@@ -58,7 +58,7 @@ const Hero = () => {
             <img
               src={heroImages[1]?.url || "/hero-img-1.png"}
               alt={heroImages[1]?.alt || "A residential estate property"}
-              className="micro-image lg:w-[324px] lg:h-[358px] w-[174px] h-[280px] lg:mt-0 mt-20"
+              className="micro-image lg:w-[324px] lg:h-[358px] h-[280px] lg:mt-0 mt-20"
             />
             <div className="absolute lg:-right-[180px] lg:left-auto -left-[100px] shadow-lg lg:rotate-[10deg] rotate-[-10deg] lg:bottom-[80px] bottom-[30px] z-10">
             <div className="bg-white lg:p-3 p-2 rounded-full lg:text-[14px] text-[10px] font-semibold">
