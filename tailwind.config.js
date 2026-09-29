@@ -11,9 +11,11 @@ export default {
         sand: { 50: '#fbfaf7', 100: '#f4efe6', 400: '#cfb782' },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['"Nunito Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         serif: ['Georgia', 'serif'],
         kaushan: ['"Kaushan Script"', 'cursive'],
+        lexend: ['Lexend', 'sans-serif'],
+        'nunito-sans': ['"Nunito Sans"', 'sans-serif'],
       },
       boxShadow: { soft: '0 24px 70px -30px rgb(22 63 54 / 0.35)' },
     },

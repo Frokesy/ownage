@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import TopNav from "./TopNav";
 import { HeroImgAttachmentOne, HeroImgAttachmentTwo } from "../icons";
@@ -8,16 +7,16 @@ const Hero = () => {
   const hero = useCmsPage("home")?.hero;
   const heroImages = hero?.images || [];
   return (
-    <div className="theme-static-light bg-cover bg-center min-h-screen lg:pb-20 pb-10" style={{ backgroundImage: `url(${hero?.image?.url || "/hero.png"})` }}>
+    <div className="theme-static-light bg-cover bg-center min-h-screen lg:pb-20 pb-10" style={{ backgroundImage: `url(${hero?.image?.url || "/hero.svg"})` }}>
       <div className="flex justify-center items-center pt-6">
         <TopNav />
       </div>
 
       <div className="flex w-full max-w-[684px] flex-col items-center justify-center px-4 text-center mx-auto lg:mt-20 mt-10">
-        <h2 className="text-[40px] font-semibold leading-[1.12] sm:text-[48px] lg:text-[60px]">
+        <h2 className="text-[38px] lg:px-auto px-4 lexend font-semibold leading-[1.12] sm:text-[38px] lg:text-[60px]">
           {hero?.title || <>Ready to <span className="text-purple-20 kaushan">Own Your</span>{" "}First Piece of <span className="text-orange-20 kaushan">Land?</span></>}
         </h2>
-        <p className="lg:text-[22px] mt-3 font-semibold">
+        <p className="lg:text-[22px] lg:px-auto px-4 text-center mt-3 nunito-sans font-bold">
           {hero?.subtitle || "Find the right land, secure your ownership, and take the first step toward building something that lasts."}
         </p>
         <div className="flex items-center space-x-3 mt-4">
@@ -36,25 +35,29 @@ const Hero = () => {
           </Link>
         </div>
 
-        <div className="my-6 flex lg:gap-10 gap-4 flex-row">
+        <div className="my-6 flex lg:gap-10 gap-4 flex-row mt-4">
           <div className="relative">
             <img
               src={heroImages[0]?.url || "/hero-img-2.png"}
               alt={heroImages[0]?.alt || "A completed residential development"}
               className="micro-image lg:w-[324px] lg:h-[358px] w-[174px] h-[280px]"
             />
-            <div className="absolute hidden lg:block right-10 top-0 z-10">
-              <HeroImgAttachmentOne />
+            <div className="absolute lg:-left-[180px] lg:right-auto -right-[100px] shadow-lg lg:rotate-[10deg] rotate-[-10deg] lg:top-[80px] top-[30px] z-10">
+              <div className="bg-white lg:p-3 p-2 rounded-full lg:text-[14px] text-[10px] font-semibold">
+                Be a property owner today. 🫵
+              </div>
             </div>
           </div>
           <div className="relative">
             <img
               src={heroImages[1]?.url || "/hero-img-1.png"}
               alt={heroImages[1]?.alt || "A residential estate property"}
-              className="micro-image lg:w-[324px] lg:h-[358px] w-[174px] h-[280px]"
+              className="micro-image lg:w-[324px] lg:h-[358px] w-[174px] h-[280px] lg:mt-0 mt-20"
             />
-            <div className="absolute hidden lg:block bottom-0 top-[20vh] left-0 z-10">
-              <HeroImgAttachmentTwo />
+            <div className="absolute lg:-right-[180px] lg:left-auto -left-[100px] shadow-lg lg:rotate-[10deg] rotate-[-10deg] lg:bottom-[80px] bottom-[30px] z-10">
+            <div className="bg-white lg:p-3 p-2 rounded-full lg:text-[14px] text-[10px] font-semibold">
+            Invest Today. Own Tomorrow.🤞
+            </div>
             </div>
           </div>
         </div>

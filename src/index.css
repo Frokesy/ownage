@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 html { scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; background: #fbfaf7; color: #17131b; transition: background-color 250ms ease, color 250ms ease; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #fbfaf7;
+  color: #17131b;
+  font-family: 'Nunito Sans', ui-sans-serif, system-ui, sans-serif;
+  transition: background-color 250ms ease, color 250ms ease;
+}
 ::selection { background: #cfb782; color: #163f36; }
 
 .dark body { background: #120f16; color: #f5eff7; }
@@ -87,6 +94,14 @@ body { margin: 0; min-width: 320px; background: #fbfaf7; color: #17131b; transit
 @layer utilities {
   .kaushan {
     font-family: 'Kaushan Script', cursive;
+  }
+
+  .lexend {
+    font-family: Lexend, sans-serif;
+  }
+
+  .nunito-sans {
+    font-family: 'Nunito Sans', sans-serif;
   }
 
   .scrollbar-hide {
