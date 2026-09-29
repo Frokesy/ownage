@@ -16,10 +16,10 @@ const Blog = () => {
   return (
     <section className="mx-auto w-[90%] max-w-7xl py-14 lg:py-24">
       <div className="flex items-center justify-center">
-        <h2 className="bg-[url('/purple-text-bg.svg')] bg-contain bg-center bg-no-repeat px-3 py-2 text-[36px] font-semibold text-white sm:text-[48px] lg:text-[62px]">
+        <h2 className="bg-[url('/purple-text-bg.svg')] lexend bg-contain bg-center bg-no-repeat px-3 py-2 text-[36px] font-semibold text-white sm:text-[48px] lg:text-[62px]">
           {section?.accent || "Latest"}
         </h2>
-        <h2 className="ml-2 text-[36px] font-semibold sm:text-[48px] lg:ml-3 lg:text-[62px]">
+        <h2 className="ml-2 text-[36px] font-semibold lexend sm:text-[48px] lg:ml-3 lg:text-[62px]">
           {section?.title || "News"}
         </h2>
       </div>
@@ -48,7 +48,7 @@ const Blog = () => {
               />
               <div className="p-5 sm:p-6">
                 <h3
-                  className={`font-bold transition-[font-size] duration-500 ${isActive ? "text-[22px] lg:text-[24px]" : "text-[18px] lg:text-[20px]"}`}
+                  className={`font-bold lexend transition-[font-size] duration-500 ${isActive ? "text-[22px] lg:text-[24px]" : "text-[18px] lg:text-[20px]"}`}
                 >
                   {item.title}
                 </h3>
